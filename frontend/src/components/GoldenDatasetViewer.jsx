@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../utils/api'
 import './GoldenDatasetViewer.css'
 
 function GoldenDatasetViewer() {
@@ -17,7 +17,7 @@ function GoldenDatasetViewer() {
 
   const loadDataset = async () => {
     try {
-      const response = await axios.get('/api/golden-dataset')
+      const response = await api.get('/api/golden-dataset')
       setDataset(response.data)
     } catch (error) {
       console.error('Error loading dataset:', error)
@@ -28,7 +28,7 @@ function GoldenDatasetViewer() {
 
   const loadStats = async () => {
     try {
-      const response = await axios.get('/api/golden-dataset/stats')
+      const response = await api.get('/api/golden-dataset/stats')
       setStats(response.data)
     } catch (error) {
       console.error('Error loading stats:', error)

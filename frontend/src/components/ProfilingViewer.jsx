@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../utils/api'
 import './ProfilingViewer.css'
 
 function ProfilingViewer() {
@@ -14,7 +14,7 @@ function ProfilingViewer() {
 
   const loadResults = async () => {
     try {
-      const response = await axios.get('/api/evaluation-results')
+      const response = await api.get('/api/evaluation-results')
       setResults(response.data)
       if (Object.keys(response.data).length > 0) {
         setSelectedProvider(Object.keys(response.data)[0])

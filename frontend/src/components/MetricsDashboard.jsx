@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../utils/api'
 import {
   LineChart,
   Line,
@@ -29,7 +29,7 @@ function MetricsDashboard() {
 
   const loadResults = async () => {
     try {
-      const response = await axios.get('/api/evaluation-results')
+      const response = await api.get('/api/evaluation-results')
       setResults(response.data)
     } catch (error) {
       console.error('Error loading results:', error)

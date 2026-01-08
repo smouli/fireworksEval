@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../utils/api'
 import './ChatInterface.css'
 
 const CHAT_STORAGE_KEY = 'querygpt_chat_messages'
@@ -72,7 +72,7 @@ function ChatInterface() {
     setLoading(true)
 
     try {
-      const response = await axios.post('/api/chat', {
+      const response = await api.post('/api/chat', {
         question: currentQuestion,
         provider: provider,
       })
