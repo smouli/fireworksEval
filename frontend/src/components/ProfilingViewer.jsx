@@ -5,6 +5,7 @@ import './ProfilingViewer.css'
 function ProfilingViewer() {
   const [results, setResults] = useState({})
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [selectedProvider, setSelectedProvider] = useState(null)
   const [selectedTestCase, setSelectedTestCase] = useState(null)
 
@@ -14,13 +15,17 @@ function ProfilingViewer() {
 
   const loadResults = async () => {
     try {
+      setError(null)
       const response = await api.get('/api/evaluation-results')
       setResults(response.data)
       if (Object.keys(response.data).length > 0) {
         setSelectedProvider(Object.keys(response.data)[0])
+      } else {
+        setError('No evaluation results found. Run an evaluation first.')
       }
     } catch (error) {
       console.error('Error loading results:', error)
+      setError(error.message || 'Failed to load evaluation results. Check console for details.')
     } finally {
       setLoading(false)
     }
@@ -30,6 +35,14 @@ function ProfilingViewer() {
     return (
       <div className="card">
         <div className="loading">Loading evaluation results...</div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="card">
+        <div className="error">Error: {error}</div>
       </div>
     )
   }

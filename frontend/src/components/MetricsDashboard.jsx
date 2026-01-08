@@ -22,6 +22,7 @@ const COLORS = ['#667eea', '#764ba2', '#f093fb', '#4facfe']
 function MetricsDashboard() {
   const [results, setResults] = useState({})
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     loadResults()
@@ -29,10 +30,15 @@ function MetricsDashboard() {
 
   const loadResults = async () => {
     try {
+      setError(null)
       const response = await api.get('/api/evaluation-results')
       setResults(response.data)
+      if (Object.keys(response.data).length === 0) {
+        setError('No evaluation results found. Run an evaluation first.')
+      }
     } catch (error) {
       console.error('Error loading results:', error)
+      setError(error.message || 'Failed to load evaluation results. Check console for details.')
     } finally {
       setLoading(false)
     }
@@ -42,6 +48,14 @@ function MetricsDashboard() {
     return (
       <div className="card">
         <div className="loading">Loading metrics...</div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="card">
+        <div className="error">Error: {error}</div>
       </div>
     )
   }

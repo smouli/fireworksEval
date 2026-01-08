@@ -2,20 +2,28 @@
 const API_BASE = import.meta.env.VITE_API_URL || ''
 
 async function request(url, options = {}) {
-  const response = await fetch(`${API_BASE}${url}`, {
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-    ...options,
-  })
+  const fullUrl = `${API_BASE}${url}`
+  
+  try {
+    const response = await fetch(fullUrl, {
+      headers: {
+        'Content-Type': 'application/json',
+        ...options.headers,
+      },
+      ...options,
+    })
 
-  if (!response.ok) {
-    const error = await response.json().catch(() => ({ detail: response.statusText }))
-    throw { response: { data: error }, message: error.detail || response.statusText }
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({ detail: response.statusText }))
+      console.error(`API Error (${response.status}):`, fullUrl, error)
+      throw { response: { data: error }, message: error.detail || response.statusText }
+    }
+
+    return { data: await response.json() }
+  } catch (error) {
+    console.error('API Request failed:', fullUrl, error)
+    throw error
   }
-
-  return { data: await response.json() }
 }
 
 export const api = {

@@ -44,9 +44,13 @@ load_env_file(str(env_path))
 app = FastAPI(title="QueryGPT Evaluation API")
 
 # Enable CORS for frontend
+# Allow all origins in production (you can restrict this to specific domains)
+cors_origins_str = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000")
+cors_origins = [origin.strip() for origin in cors_origins_str.split(",") if origin.strip()]
+# In production, allow all origins (you can restrict this)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],  # Vite default ports
+    allow_origins=["*"],  # Allow all origins for Render deployment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -118,10 +122,33 @@ async def root():
 @app.get("/api/health")
 async def health():
     """Health check endpoint."""
+    results_dir = Path(__file__).parent.parent
+    results_files = {
+        "fireworks": "evaluation_results_fireworks.json",
+        "openai": "evaluation_results_openai.json",
+        "fireworks_finetuned": "evaluation_results_post_tuning.json",
+    }
+    
+    available_files = {}
+    for provider, filename in results_files.items():
+        filepath = results_dir / filename
+        available_files[provider] = {
+            "exists": filepath.exists(),
+            "path": str(filepath),
+        }
+    
+    dataset_path = results_dir / "evaluation_data.json"
+    
     return {
         "status": "healthy",
         "fireworks_available": fireworks_querygpt is not None,
         "openai_available": openai_querygpt is not None,
+        "results_dir": str(results_dir),
+        "evaluation_files": available_files,
+        "dataset_file": {
+            "exists": dataset_path.exists(),
+            "path": str(dataset_path),
+        },
     }
 
 
@@ -236,13 +263,45 @@ async def get_evaluation_results():
             try:
                 with open(filepath) as f:
                     data = json.load(f)
+                    
+                    # Extract test cases from sql_generation_agent results
+                    test_cases = []
+                    if "detailed_results" in data and "sql_generation_agent" in data["detailed_results"]:
+                        sql_results = data["detailed_results"]["sql_generation_agent"]
+                        # Also get intent and table results for agent_results
+                        intent_results = data.get("detailed_results", {}).get("intent_agent", [])
+                        table_results = data.get("detailed_results", {}).get("table_agent", [])
+                        
+                        for idx, sql_result in enumerate(sql_results):
+                            test_case = {
+                                "question": sql_result.get("question", ""),
+                                "generated_sql": sql_result.get("generated_sql", ""),
+                                "expected_sql": sql_result.get("expected_sql", ""),
+                                "sql_similarity": sql_result.get("sql_similarity", 0),
+                                "sql_exact_match": sql_result.get("sql_exact_match", False),
+                                "result_match": sql_result.get("result_match", False),
+                                "correct": sql_result.get("correct", False),
+                                "error": sql_result.get("error"),
+                            }
+                            
+                            # Add agent results if available
+                            if idx < len(intent_results) and idx < len(table_results):
+                                test_case["agent_results"] = {
+                                    "intent": intent_results[idx].get("predicted_workspace"),
+                                    "tables": table_results[idx].get("predicted_tables", []),
+                                }
+                            
+                            test_cases.append(test_case)
+                    
                     results[provider] = {
                         "summary": data.get("summary", {}),
-                        "agent_metrics": data.get("agent_metrics", {}),
-                        "test_cases": data.get("test_cases", []),
+                        "agent_metrics": data.get("summary", {}).get("latency_metrics", {}),
+                        "test_cases": test_cases,
                     }
             except Exception as e:
                 print(f"Error loading {filename}: {e}")
+                import traceback
+                traceback.print_exc()
     
     return results
 

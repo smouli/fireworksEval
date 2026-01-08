@@ -6,6 +6,7 @@ function GoldenDatasetViewer() {
   const [dataset, setDataset] = useState([])
   const [stats, setStats] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [selectedItem, setSelectedItem] = useState(null)
   const [filterCategory, setFilterCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
@@ -17,10 +18,12 @@ function GoldenDatasetViewer() {
 
   const loadDataset = async () => {
     try {
+      setError(null)
       const response = await api.get('/api/golden-dataset')
-      setDataset(response.data)
+      setDataset(response.data || [])
     } catch (error) {
       console.error('Error loading dataset:', error)
+      setError(error.message || 'Failed to load golden dataset. Check console for details.')
     } finally {
       setLoading(false)
     }
@@ -48,6 +51,14 @@ function GoldenDatasetViewer() {
     return (
       <div className="card">
         <div className="loading">Loading golden dataset...</div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="card">
+        <div className="error">Error: {error}</div>
       </div>
     )
   }
