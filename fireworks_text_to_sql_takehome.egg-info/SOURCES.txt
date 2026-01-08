@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+fireworks_text_to_sql_takehome.egg-info/PKG-INFO
+fireworks_text_to_sql_takehome.egg-info/SOURCES.txt
+fireworks_text_to_sql_takehome.egg-info/dependency_links.txt
+fireworks_text_to_sql_takehome.egg-info/requires.txt
+fireworks_text_to_sql_takehome.egg-info/top_level.txt

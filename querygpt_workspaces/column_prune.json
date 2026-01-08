@@ -1,0 +1,71 @@
+{
+  "column_pruning_examples": [
+    {
+      "question": "How many trips were completed by Teslas in Seattle yesterday?",
+      "table": "trips",
+      "relevant_columns": [
+        "trip_id",
+        "trip_status",
+        "pickup_time",
+        "pickup_city_id",
+        "vehicle_id"
+      ],
+      "irrelevant_columns": [
+        "customer_id",
+        "dropoff_time",
+        "payment_method",
+        "rating",
+        "tip_amount"
+      ],
+      "reasoning": "Only need status, time, city, and vehicle for this query"
+    },
+    {
+      "question": "What are the top customers by total spending?",
+      "table": "trips",
+      "relevant_columns": [
+        "customer_id",
+        "total_amount",
+        "trip_status"
+      ],
+      "irrelevant_columns": [
+        "driver_id",
+        "pickup_time",
+        "dropoff_time",
+        "distance_miles",
+        "duration_minutes",
+        "payment_method"
+      ],
+      "reasoning": "Only need customer, amount, and status for spending calculation"
+    },
+    {
+      "question": "Show drivers with their vehicle information",
+      "table": "drivers",
+      "relevant_columns": [
+        "driver_id",
+        "first_name",
+        "last_name"
+      ],
+      "irrelevant_columns": [
+        "email",
+        "phone",
+        "total_trips",
+        "joined_date"
+      ],
+      "reasoning": "Only need driver ID and name for join"
+    }
+  ],
+  "pruning_strategy": {
+    "description": "Identify columns needed based on: SELECT clauses, WHERE filters, JOIN keys, GROUP BY, ORDER BY",
+    "keep_always": [
+      "primary_keys",
+      "foreign_keys",
+      "columns_in_where_clause",
+      "columns_in_select"
+    ],
+    "can_prune": [
+      "columns_not_referenced",
+      "unused_foreign_keys",
+      "metadata_columns"
+    ]
+  }
+}

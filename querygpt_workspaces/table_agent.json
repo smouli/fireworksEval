@@ -1,0 +1,37 @@
+{
+  "table_selection_examples": [
+    {
+      "question": "How many trips were completed by Teslas in Seattle yesterday?",
+      "relevant_tables": [
+        "trips",
+        "vehicles",
+        "cities"
+      ],
+      "reasoning": "Need trips for completion status, vehicles for Tesla filter, cities for Seattle filter"
+    },
+    {
+      "question": "What are the top customers by total spending?",
+      "relevant_tables": [
+        "customers",
+        "trips"
+      ],
+      "reasoning": "Need customers table and trips to calculate spending"
+    },
+    {
+      "question": "Show drivers with their vehicle information",
+      "relevant_tables": [
+        "drivers",
+        "vehicles"
+      ],
+      "reasoning": "Need both drivers and vehicles tables"
+    },
+    {
+      "question": "Which promotion code has been used the most?",
+      "relevant_tables": [
+        "promotions",
+        "trip_promotions"
+      ],
+      "reasoning": "Need promotions and trip_promotions to count usage"
+    }
+  ]
+}

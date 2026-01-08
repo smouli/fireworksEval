@@ -1,0 +1,45 @@
+{
+  "created_at": "2026-01-07T02:56:19.677550",
+  "workspaces": {
+    "mobility": {
+      "name": "Mobility",
+      "tables": [
+        "trips",
+        "drivers",
+        "vehicles",
+        "cities",
+        "customers"
+      ],
+      "sql_samples_count": 8
+    },
+    "customer_analytics": {
+      "name": "Customer Analytics",
+      "tables": [
+        "customers",
+        "trips",
+        "cities"
+      ],
+      "sql_samples_count": 4
+    },
+    "vehicle_operations": {
+      "name": "Vehicle Operations",
+      "tables": [
+        "vehicles",
+        "trips",
+        "drivers"
+      ],
+      "sql_samples_count": 3
+    },
+    "promotions": {
+      "name": "Promotions",
+      "tables": [
+        "promotions",
+        "trip_promotions",
+        "trips"
+      ],
+      "sql_samples_count": 3
+    }
+  },
+  "total_sql_samples": 18,
+  "total_tables": 7
+}

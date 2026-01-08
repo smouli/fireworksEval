@@ -1,0 +1,139 @@
+Using account ID: sanatmouli-clqab3ddm
+
+⚠ Skipping baseline evaluation
+✓ Loaded existing baseline results
+
+================================================================================
+STEP 2: UPLOAD DATASET
+================================================================================
+
+Creating dataset 'querygpt-sft-dataset-v2'...
+  Found 1000 examples in golden_dataset_sft.jsonl
+⚠ Dataset 'querygpt-sft-dataset-v2' exists but has 1000 examples (need 1000)
+  Creating new dataset with suffix '-v2'...
+✓ Dataset 'querygpt-sft-dataset-v2-v2' created
+
+Uploading golden_dataset_sft.jsonl...
+  File size: 0.53 MB
+✓ File uploaded
+
+Validating upload...
+✓ Upload validated
+
+Waiting for dataset to be ready...
+✓ Dataset is ready
+
+================================================================================
+STEP 3: CREATE FINE-TUNING JOB
+================================================================================
+
+Base Model: accounts/fireworks/models/qwen3-30b-a3b-instruct-2507
+Fine-tuned Model ID: accounts/sanatmouli-clqab3ddm/models/querygpt-sft-20260108-024800
+Training Dataset: accounts/sanatmouli-clqab3ddm/datasets/querygpt-sft-dataset-v2-v2
+
+Fine-tuning Configuration:
+  Learning Rate: 5e-06
+  Epochs: 2
+  LoRA Rank: 32
+  Batch Size: 16384
+
+✓ Fine-tuning job created: pn0tki0t
+
+Monitor progress at:
+  https://app.fireworks.ai/dashboard/fine-tuning/supervised/pn0tki0t
+
+================================================================================
+STEP 4: MONITOR FINE-TUNING JOB
+================================================================================
+
+Monitoring job pn0tki0t...
+(This may take 10-60 minutes depending on dataset size)
+
+[0.0m] State: JOB_STATE_RUNNING
+
+[6.1m] State: JOB_STATE_COMPLETED
+
+✓ Fine-tuning completed in 6.1 minutes
+
+✓ Fine-tuned model ID: accounts/sanatmouli-clqab3ddm/models/querygpt-sft-20260108-024800
+
+================================================================================
+STEP 5: DEPLOY FINE-TUNED MODEL
+================================================================================
+
+Deploying model: accounts/sanatmouli-clqab3ddm/models/querygpt-sft-20260108-024800
+(Note: You may need to deploy manually via UI or use deployment API)
+
+Model will be available at: accounts/fireworks/models/accounts/sanatmouli-clqab3ddm/models/querygpt-sft-20260108-024800
+
+⚠ Note: Fine-tuned model will be used for evaluation once it's deployed.
+   If the model isn't available yet, you may need to deploy it manually or wait.
+
+================================================================================
+STEP 6: POST-TUNING EVALUATION
+================================================================================
+
+Loading evaluation data from evaluation_data.json...
+✓ Loaded 34 test cases
+
+Using fine-tuned model for evaluation: accounts/sanatmouli-clqab3ddm/models/querygpt-sft-20260108-024800
+Note: If you get an error, the model may need to be deployed first.
+Check the Fireworks dashboard to deploy the model, or it may auto-deploy.
+
+Initializing QueryGPT with model: accounts/sanatmouli-clqab3ddm/models/querygpt-sft-20260108-024800
+✓ QueryGPT initialized
+
+Loading database...
+✓ Database loaded
+
+Running evaluation...
+
+================================================================================
+Evaluating 34 test cases
+================================================================================
+
+
+✓ Post-tuning evaluation saved to evaluation_results_post_tuning.json
+
+--------------------------------------------------------------------------------
+POST-TUNING METRICS:
+--------------------------------------------------------------------------------
+Overall Accuracy: 0.0%
+Average Latency: 0.0ms
+Total Tokens: 0
+Estimated Cost: $0.0000
+Reward Score: 0.400
+
+================================================================================
+STEP 7: COMPARISON REPORT
+================================================================================
+
+--------------------------------------------------------------------------------
+METRICS COMPARISON:
+--------------------------------------------------------------------------------
+
+📊 ACCURACY:
+  Baseline:    75.46%
+  Post-tuning: 0.00%
+  Change:      -100.00% ❌
+
+⚡ LATENCY:
+  Baseline:    1412.8ms
+  Post-tuning: 0.0ms
+  Change:      +100.00% ✅
+
+💰 COST:
+  Baseline:    $0.0419
+  Post-tuning: $0.0000
+  Change:      +100.00% ❌
+
+🎯 REWARD SCORE:
+  Baseline:    0.596
+  Post-tuning: 0.400
+  Change:      -0.196 ❌
+
+✓ Comparison report saved to sft_comparison_report.json
+
+================================================================================
+✅ SFT WORKFLOW COMPLETED
+================================================================================

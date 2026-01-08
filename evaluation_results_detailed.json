@@ -1,0 +1,244 @@
+{
+  "provider": "Fireworks",
+  "summary": {
+    "intent_agent": {
+      "accuracy": 1.0,
+      "total": 1,
+      "correct": 1,
+      "avg_confidence": 0.95
+    },
+    "table_agent": {
+      "avg_precision": 1.0,
+      "avg_recall": 1.0,
+      "avg_f1": 1.0,
+      "total": 1,
+      "correct": 1
+    },
+    "column_prune_agent": {
+      "avg_precision": 0.6,
+      "avg_recall": 1.0,
+      "avg_f1": 0.7499999999999999,
+      "avg_token_savings": 57.052797478329396,
+      "total": 1,
+      "correct": 1
+    },
+    "sql_generation_agent": {
+      "avg_sql_similarity": 1.0,
+      "sql_exact_match_rate": 1.0,
+      "result_match_rate": 0.0,
+      "total": 1,
+      "correct": 1
+    },
+    "overall": {
+      "accuracy": 1.0,
+      "total": 1,
+      "correct": 1
+    },
+    "latency_metrics": {
+      "intent_agent": {
+        "avg_latency_ms": 1108.7591648101807,
+        "min_latency_ms": 1108.7591648101807,
+        "max_latency_ms": 1108.7591648101807,
+        "total_tokens": 336,
+        "tool_calls_rate": 1.0
+      },
+      "table_agent": {
+        "avg_latency_ms": 811.7330074310303,
+        "min_latency_ms": 811.7330074310303,
+        "max_latency_ms": 811.7330074310303,
+        "total_tokens": 265,
+        "tool_calls_rate": 1.0
+      },
+      "column_prune_agent": {
+        "avg_latency_ms": 1061.382532119751,
+        "min_latency_ms": 1032.4301719665527,
+        "max_latency_ms": 1090.3348922729492,
+        "total_tokens": 846,
+        "tool_calls_rate": 1.0
+      },
+      "sql_generation_agent": {
+        "avg_latency_ms": 912.086009979248,
+        "min_latency_ms": 912.086009979248,
+        "max_latency_ms": 912.086009979248,
+        "total_tokens": 607,
+        "tool_calls_rate": 1.0
+      }
+    }
+  },
+  "detailed_results": {
+    "intent_agent": [
+      {
+        "question": "What are the names and emails of all active drivers?",
+        "predicted_workspace": "mobility",
+        "expected_workspace": "mobility",
+        "correct": true,
+        "confidence": 0.95,
+        "error": null
+      }
+    ],
+    "table_agent": [
+      {
+        "question": "What are the names and emails of all active drivers?",
+        "predicted_tables": [
+          "drivers"
+        ],
+        "expected_tables": [
+          "drivers"
+        ],
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "correct": true,
+        "error": null
+      }
+    ],
+    "column_prune_agent": [
+      {
+        "question": "What are the names and emails of all active drivers?",
+        "table": "drivers",
+        "predicted_columns": [
+          "email",
+          "last_name",
+          "driver_id",
+          "first_name",
+          "status"
+        ],
+        "expected_columns": [
+          "email",
+          "last_name",
+          "first_name"
+        ],
+        "precision": 0.6,
+        "recall": 1.0,
+        "f1": 0.7499999999999999,
+        "token_savings_pct": 57.052797478329396,
+        "correct": true,
+        "error": null
+      }
+    ],
+    "sql_generation_agent": [
+      {
+        "question": "What are the names and emails of all active drivers?",
+        "generated_sql": "SELECT first_name || ' ' || last_name as driver_name, email FROM drivers WHERE status = 'active'",
+        "expected_sql": "SELECT first_name, last_name, email FROM drivers WHERE status = 'active'",
+        "sql_similarity": 1.0,
+        "sql_exact_match": true,
+        "result_match": false,
+        "result_details": {
+          "match": false,
+          "row_count_match": true,
+          "actual_rows": 19,
+          "expected_rows": 19,
+          "column_match": false,
+          "actual_columns": [
+            "email",
+            "driver_name"
+          ],
+          "expected_columns": [
+            "email",
+            "last_name",
+            "first_name"
+          ],
+          "value_match": null
+        },
+        "correct": true,
+        "error": null
+      }
+    ],
+    "overall": [
+      {
+        "question": "What are the names and emails of all active drivers?",
+        "correct": true,
+        "intent_correct": true,
+        "table_correct": true,
+        "sql_correct": true
+      }
+    ]
+  },
+  "agent_metrics": {
+    "intent_agent": {
+      "total_calls": 1,
+      "successful_calls": 1,
+      "success_rate": 1.0,
+      "avg_latency_ms": 1108.7591648101807,
+      "min_latency_ms": 1108.7591648101807,
+      "max_latency_ms": 1108.7591648101807,
+      "avg_tokens": 336.0,
+      "total_tokens": 336,
+      "tool_calls_usage": {
+        "structured_tool_calls": 1,
+        "fallback_parsing": 0,
+        "tool_calls_rate": 1.0
+      },
+      "tool_call_accuracy": {
+        "accurate_calls": 1,
+        "accuracy_rate": 1.0,
+        "total_validation_errors": 0,
+        "avg_validation_errors_per_call": 0.0
+      }
+    },
+    "table_agent": {
+      "total_calls": 1,
+      "successful_calls": 1,
+      "success_rate": 1.0,
+      "avg_latency_ms": 811.7330074310303,
+      "min_latency_ms": 811.7330074310303,
+      "max_latency_ms": 811.7330074310303,
+      "avg_tokens": 265.0,
+      "total_tokens": 265,
+      "tool_calls_usage": {
+        "structured_tool_calls": 1,
+        "fallback_parsing": 0,
+        "tool_calls_rate": 1.0
+      },
+      "tool_call_accuracy": {
+        "accurate_calls": 1,
+        "accuracy_rate": 1.0,
+        "total_validation_errors": 0,
+        "avg_validation_errors_per_call": 0.0
+      }
+    },
+    "column_prune_agent": {
+      "total_calls": 2,
+      "successful_calls": 2,
+      "success_rate": 1.0,
+      "avg_latency_ms": 1061.382532119751,
+      "min_latency_ms": 1032.4301719665527,
+      "max_latency_ms": 1090.3348922729492,
+      "avg_tokens": 423.0,
+      "total_tokens": 846,
+      "tool_calls_usage": {
+        "structured_tool_calls": 2,
+        "fallback_parsing": 0,
+        "tool_calls_rate": 1.0
+      },
+      "tool_call_accuracy": {
+        "accurate_calls": 2,
+        "accuracy_rate": 1.0,
+        "total_validation_errors": 0,
+        "avg_validation_errors_per_call": 0.0
+      }
+    },
+    "sql_generation_agent": {
+      "total_calls": 1,
+      "successful_calls": 1,
+      "success_rate": 1.0,
+      "avg_latency_ms": 912.086009979248,
+      "min_latency_ms": 912.086009979248,
+      "max_latency_ms": 912.086009979248,
+      "avg_tokens": 607.0,
+      "total_tokens": 607,
+      "tool_calls_usage": {
+        "structured_tool_calls": 1,
+        "fallback_parsing": 0,
+        "tool_calls_rate": 1.0
+      },
+      "tool_call_accuracy": {
+        "accurate_calls": 1,
+        "accuracy_rate": 1.0,
+        "total_validation_errors": 0,
+        "avg_validation_errors_per_call": 0.0
+      }
+    }
+  }
+}

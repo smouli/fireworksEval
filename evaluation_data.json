@@ -1,0 +1,3380 @@
+[
+  {
+    "question": "What are the names and emails of all active drivers?",
+    "sql": "SELECT first_name, last_name, email FROM drivers WHERE status = 'active'",
+    "category": "simple_filtering",
+    "expected_result": [
+      {
+        "first_name": "Lisa",
+        "last_name": "Miller",
+        "email": "driver3@example.com"
+      },
+      {
+        "first_name": "Michael",
+        "last_name": "Miller",
+        "email": "driver5@example.com"
+      },
+      {
+        "first_name": "Emily",
+        "last_name": "Smith",
+        "email": "driver8@example.com"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Miller",
+        "email": "driver9@example.com"
+      },
+      {
+        "first_name": "Emily",
+        "last_name": "Jones",
+        "email": "driver10@example.com"
+      },
+      {
+        "first_name": "Jessica",
+        "last_name": "Jones",
+        "email": "driver13@example.com"
+      },
+      {
+        "first_name": "Jessica",
+        "last_name": "Miller",
+        "email": "driver19@example.com"
+      },
+      {
+        "first_name": "Emily",
+        "last_name": "Johnson",
+        "email": "driver22@example.com"
+      },
+      {
+        "first_name": "Emily",
+        "last_name": "Williams",
+        "email": "driver24@example.com"
+      },
+      {
+        "first_name": "Sarah",
+        "last_name": "Brown",
+        "email": "driver25@example.com"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Williams",
+        "email": "driver28@example.com"
+      },
+      {
+        "first_name": "Lisa",
+        "last_name": "Smith",
+        "email": "driver30@example.com"
+      },
+      {
+        "first_name": "Sarah",
+        "last_name": "Smith",
+        "email": "driver31@example.com"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Williams",
+        "email": "driver36@example.com"
+      },
+      {
+        "first_name": "Robert",
+        "last_name": "Rodriguez",
+        "email": "driver39@example.com"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Martinez",
+        "email": "driver40@example.com"
+      },
+      {
+        "first_name": "James",
+        "last_name": "Martinez",
+        "email": "driver43@example.com"
+      },
+      {
+        "first_name": "Lisa",
+        "last_name": "Garcia",
+        "email": "driver47@example.com"
+      },
+      {
+        "first_name": "Jessica",
+        "last_name": "Miller",
+        "email": "driver49@example.com"
+      }
+    ]
+  },
+  {
+    "question": "List all trips that were completed",
+    "sql": "SELECT trip_id, driver_id, customer_id, total_amount FROM trips WHERE trip_status = 'completed'",
+    "category": "simple_filtering",
+    "expected_result": [
+      {
+        "trip_id": 1,
+        "driver_id": 44,
+        "customer_id": 51,
+        "total_amount": 9.040000000000001
+      },
+      {
+        "trip_id": 5,
+        "driver_id": 22,
+        "customer_id": 197,
+        "total_amount": 49.61
+      },
+      {
+        "trip_id": 9,
+        "driver_id": 15,
+        "customer_id": 36,
+        "total_amount": 49.15
+      },
+      {
+        "trip_id": 10,
+        "driver_id": 29,
+        "customer_id": 10,
+        "total_amount": 7.2
+      },
+      {
+        "trip_id": 13,
+        "driver_id": 8,
+        "customer_id": 1,
+        "total_amount": 54.81
+      },
+      {
+        "trip_id": 15,
+        "driver_id": 12,
+        "customer_id": 79,
+        "total_amount": 43.18
+      },
+      {
+        "trip_id": 19,
+        "driver_id": 37,
+        "customer_id": 87,
+        "total_amount": 45.35
+      },
+      {
+        "trip_id": 39,
+        "driver_id": 25,
+        "customer_id": 1,
+        "total_amount": 15.17
+      },
+      {
+        "trip_id": 53,
+        "driver_id": 46,
+        "customer_id": 81,
+        "total_amount": 6.140000000000001
+      },
+      {
+        "trip_id": 60,
+        "driver_id": 8,
+        "customer_id": 30,
+        "total_amount": 24.159999999999997
+      },
+      {
+        "trip_id": 70,
+        "driver_id": 33,
+        "customer_id": 188,
+        "total_amount": 6.069999999999999
+      },
+      {
+        "trip_id": 71,
+        "driver_id": 24,
+        "customer_id": 37,
+        "total_amount": 19.17
+      },
+      {
+        "trip_id": 72,
+        "driver_id": 42,
+        "customer_id": 105,
+        "total_amount": 32.9
+      },
+      {
+        "trip_id": 75,
+        "driver_id": 42,
+        "customer_id": 98,
+        "total_amount": 39.85
+      },
+      {
+        "trip_id": 89,
+        "driver_id": 17,
+        "customer_id": 137,
+        "total_amount": 24.34
+      },
+      {
+        "trip_id": 99,
+        "driver_id": 7,
+        "customer_id": 142,
+        "total_amount": 41.44
+      },
+      {
+        "trip_id": 101,
+        "driver_id": 22,
+        "customer_id": 109,
+        "total_amount": 36.39
+      },
+      {
+        "trip_id": 103,
+        "driver_id": 10,
+        "customer_id": 67,
+        "total_amount": 44.04
+      },
+      {
+        "trip_id": 107,
+        "driver_id": 46,
+        "customer_id": 67,
+        "total_amount": 50.82000000000001
+      },
+      {
+        "trip_id": 112,
+        "driver_id": 21,
+        "customer_id": 90,
+        "total_amount": 20.44
+      },
+      {
+        "trip_id": 115,
+        "driver_id": 47,
+        "customer_id": 191,
+        "total_amount": 30.540000000000003
+      },
+      {
+        "trip_id": 117,
+        "driver_id": 27,
+        "customer_id": 88,
+        "total_amount": 8.1
+      },
+      {
+        "trip_id": 123,
+        "driver_id": 29,
+        "customer_id": 147,
+        "total_amount": 24.51
+      },
+      {
+        "trip_id": 125,
+        "driver_id": 7,
+        "customer_id": 141,
+        "total_amount": 19.73
+      },
+      {
+        "trip_id": 126,
+        "driver_id": 2,
+        "customer_id": 141,
+        "total_amount": 6.579999999999999
+      },
+      {
+        "trip_id": 129,
+        "driver_id": 40,
+        "customer_id": 19,
+        "total_amount": 36.68
+      },
+      {
+        "trip_id": 130,
+        "driver_id": 5,
+        "customer_id": 165,
+        "total_amount": 10.54
+      },
+      {
+        "trip_id": 135,
+        "driver_id": 29,
+        "customer_id": 88,
+        "total_amount": 58.27
+      },
+      {
+        "trip_id": 139,
+        "driver_id": 8,
+        "customer_id": 118,
+        "total_amount": 40.29
+      },
+      {
+        "trip_id": 144,
+        "driver_id": 50,
+        "customer_id": 128,
+        "total_amount": 37.28
+      },
+      {
+        "trip_id": 146,
+        "driver_id": 44,
+        "customer_id": 146,
+        "total_amount": 7.83
+      },
+      {
+        "trip_id": 158,
+        "driver_id": 6,
+        "customer_id": 128,
+        "total_amount": 33.61
+      },
+      {
+        "trip_id": 165,
+        "driver_id": 22,
+        "customer_id": 90,
+        "total_amount": 38.57
+      },
+      {
+        "trip_id": 169,
+        "driver_id": 40,
+        "customer_id": 180,
+        "total_amount": 14.02
+      },
+      {
+        "trip_id": 170,
+        "driver_id": 38,
+        "customer_id": 12,
+        "total_amount": 51.14
+      },
+      {
+        "trip_id": 173,
+        "driver_id": 17,
+        "customer_id": 15,
+        "total_amount": 17.13
+      },
+      {
+        "trip_id": 181,
+        "driver_id": 19,
+        "customer_id": 32,
+        "total_amount": 7.73
+      },
+      {
+        "trip_id": 184,
+        "driver_id": 44,
+        "customer_id": 188,
+        "total_amount": 28.74
+      },
+      {
+        "trip_id": 188,
+        "driver_id": 21,
+        "customer_id": 175,
+        "total_amount": 19.009999999999998
+      },
+      {
+        "trip_id": 190,
+        "driver_id": 45,
+        "customer_id": 144,
+        "total_amount": 11.95
+      },
+      {
+        "trip_id": 191,
+        "driver_id": 27,
+        "customer_id": 175,
+        "total_amount": 26.31
+      },
+      {
+        "trip_id": 193,
+        "driver_id": 19,
+        "customer_id": 90,
+        "total_amount": 15.180000000000001
+      },
+      {
+        "trip_id": 198,
+        "driver_id": 45,
+        "customer_id": 13,
+        "total_amount": 33.06
+      },
+      {
+        "trip_id": 199,
+        "driver_id": 10,
+        "customer_id": 126,
+        "total_amount": 45.03
+      },
+      {
+        "trip_id": 204,
+        "driver_id": 5,
+        "customer_id": 188,
+        "total_amount": 31.7
+      },
+      {
+        "trip_id": 205,
+        "driver_id": 34,
+        "customer_id": 85,
+        "total_amount": 46.02
+      },
+      {
+        "trip_id": 207,
+        "driver_id": 17,
+        "customer_id": 179,
+        "total_amount": 25.73
+      },
+      {
+        "trip_id": 209,
+        "driver_id": 25,
+        "customer_id": 113,
+        "total_amount": 19.21
+      },
+      {
+        "trip_id": 212,
+        "driver_id": 34,
+        "customer_id": 177,
+        "total_amount": 28.27
+      },
+      {
+        "trip_id": 215,
+        "driver_id": 18,
+        "customer_id": 173,
+        "total_amount": 31.38
+      },
+      {
+        "trip_id": 217,
+        "driver_id": 39,
+        "customer_id": 45,
+        "total_amount": 11.85
+      },
+      {
+        "trip_id": 220,
+        "driver_id": 18,
+        "customer_id": 28,
+        "total_amount": 5.77
+      },
+      {
+        "trip_id": 223,
+        "driver_id": 26,
+        "customer_id": 183,
+        "total_amount": 48.38
+      },
+      {
+        "trip_id": 225,
+        "driver_id": 19,
+        "customer_id": 131,
+        "total_amount": 40.39
+      },
+      {
+        "trip_id": 238,
+        "driver_id": 43,
+        "customer_id": 173,
+        "total_amount": 48.28
+      },
+      {
+        "trip_id": 241,
+        "driver_id": 3,
+        "customer_id": 132,
+        "total_amount": 38.85
+      },
+      {
+        "trip_id": 242,
+        "driver_id": 17,
+        "customer_id": 135,
+        "total_amount": 10.69
+      },
+      {
+        "trip_id": 247,
+        "driver_id": 8,
+        "customer_id": 195,
+        "total_amount": 6.6
+      },
+      {
+        "trip_id": 248,
+        "driver_id": 24,
+        "customer_id": 169,
+        "total_amount": 13.520000000000001
+      },
+      {
+        "trip_id": 252,
+        "driver_id": 23,
+        "customer_id": 81,
+        "total_amount": 14.41
+      },
+      {
+        "trip_id": 264,
+        "driver_id": 17,
+        "customer_id": 43,
+        "total_amount": 42.58
+      },
+      {
+        "trip_id": 267,
+        "driver_id": 25,
+        "customer_id": 139,
+        "total_amount": 13.32
+      },
+      {
+        "trip_id": 270,
+        "driver_id": 1,
+        "customer_id": 96,
+        "total_amount": 49.84
+      },
+      {
+        "trip_id": 273,
+        "driver_id": 48,
+        "customer_id": 84,
+        "total_amount": 50.120000000000005
+      },
+      {
+        "trip_id": 274,
+        "driver_id": 35,
+        "customer_id": 35,
+        "total_amount": 21.91
+      },
+      {
+        "trip_id": 278,
+        "driver_id": 6,
+        "customer_id": 182,
+        "total_amount": 53.75
+      },
+      {
+        "trip_id": 291,
+        "driver_id": 50,
+        "customer_id": 62,
+        "total_amount": 9.68
+      },
+      {
+        "trip_id": 295,
+        "driver_id": 46,
+        "customer_id": 144,
+        "total_amount": 32.89
+      },
+      {
+        "trip_id": 297,
+        "driver_id": 22,
+        "customer_id": 197,
+        "total_amount": 42.28
+      },
+      {
+        "trip_id": 321,
+        "driver_id": 24,
+        "customer_id": 136,
+        "total_amount": 21.349999999999998
+      },
+      {
+        "trip_id": 322,
+        "driver_id": 14,
+        "customer_id": 119,
+        "total_amount": 24.02
+      },
+      {
+        "trip_id": 334,
+        "driver_id": 26,
+        "customer_id": 149,
+        "total_amount": 33.86
+      },
+      {
+        "trip_id": 335,
+        "driver_id": 25,
+        "customer_id": 78,
+        "total_amount": 22.97
+      },
+      {
+        "trip_id": 341,
+        "driver_id": 5,
+        "customer_id": 193,
+        "total_amount": 37.88
+      },
+      {
+        "trip_id": 342,
+        "driver_id": 4,
+        "customer_id": 155,
+        "total_amount": 41.309999999999995
+      },
+      {
+        "trip_id": 343,
+        "driver_id": 40,
+        "customer_id": 63,
+        "total_amount": 11.75
+      },
+      {
+        "trip_id": 344,
+        "driver_id": 50,
+        "customer_id": 119,
+        "total_amount": 12.21
+      },
+      {
+        "trip_id": 350,
+        "driver_id": 40,
+        "customer_id": 155,
+        "total_amount": 32.12
+      },
+      {
+        "trip_id": 352,
+        "driver_id": 11,
+        "customer_id": 83,
+        "total_amount": 39.58
+      },
+      {
+        "trip_id": 353,
+        "driver_id": 6,
+        "customer_id": 187,
+        "total_amount": 23.4
+      },
+      {
+        "trip_id": 354,
+        "driver_id": 43,
+        "customer_id": 103,
+        "total_amount": 14.82
+      },
+      {
+        "trip_id": 360,
+        "driver_id": 1,
+        "customer_id": 143,
+        "total_amount": 53.92
+      },
+      {
+        "trip_id": 362,
+        "driver_id": 49,
+        "customer_id": 48,
+        "total_amount": 34.07
+      },
+      {
+        "trip_id": 366,
+        "driver_id": 23,
+        "customer_id": 193,
+        "total_amount": 41.72
+      },
+      {
+        "trip_id": 368,
+        "driver_id": 37,
+        "customer_id": 121,
+        "total_amount": 34.86
+      },
+      {
+        "trip_id": 373,
+        "driver_id": 24,
+        "customer_id": 116,
+        "total_amount": 37.61
+      },
+      {
+        "trip_id": 374,
+        "driver_id": 40,
+        "customer_id": 57,
+        "total_amount": 24.76
+      },
+      {
+        "trip_id": 392,
+        "driver_id": 7,
+        "customer_id": 12,
+        "total_amount": 45.660000000000004
+      },
+      {
+        "trip_id": 393,
+        "driver_id": 30,
+        "customer_id": 69,
+        "total_amount": 41.93
+      },
+      {
+        "trip_id": 396,
+        "driver_id": 19,
+        "customer_id": 199,
+        "total_amount": 22.73
+      },
+      {
+        "trip_id": 402,
+        "driver_id": 4,
+        "customer_id": 42,
+        "total_amount": 37.99
+      },
+      {
+        "trip_id": 409,
+        "driver_id": 10,
+        "customer_id": 86,
+        "total_amount": 13.84
+      },
+      {
+        "trip_id": 411,
+        "driver_id": 29,
+        "customer_id": 48,
+        "total_amount": 6.05
+      },
+      {
+        "trip_id": 412,
+        "driver_id": 37,
+        "customer_id": 97,
+        "total_amount": 24.770000000000003
+      },
+      {
+        "trip_id": 416,
+        "driver_id": 50,
+        "customer_id": 48,
+        "total_amount": 29.560000000000002
+      },
+      {
+        "trip_id": 422,
+        "driver_id": 21,
+        "customer_id": 122,
+        "total_amount": 31.81
+      },
+      {
+        "trip_id": 424,
+        "driver_id": 29,
+        "customer_id": 153,
+        "total_amount": 30.63
+      },
+      {
+        "trip_id": 428,
+        "driver_id": 30,
+        "customer_id": 112,
+        "total_amount": 51.58
+      },
+      {
+        "trip_id": 433,
+        "driver_id": 40,
+        "customer_id": 154,
+        "total_amount": 45.35
+      },
+      {
+        "trip_id": 434,
+        "driver_id": 12,
+        "customer_id": 91,
+        "total_amount": 33.07
+      },
+      {
+        "trip_id": 436,
+        "driver_id": 13,
+        "customer_id": 8,
+        "total_amount": 5.4
+      },
+      {
+        "trip_id": 441,
+        "driver_id": 34,
+        "customer_id": 187,
+        "total_amount": 15.22
+      },
+      {
+        "trip_id": 445,
+        "driver_id": 47,
+        "customer_id": 52,
+        "total_amount": 43.97
+      },
+      {
+        "trip_id": 449,
+        "driver_id": 38,
+        "customer_id": 147,
+        "total_amount": 25.46
+      },
+      {
+        "trip_id": 450,
+        "driver_id": 18,
+        "customer_id": 171,
+        "total_amount": 43.21
+      },
+      {
+        "trip_id": 453,
+        "driver_id": 34,
+        "customer_id": 86,
+        "total_amount": 31.349999999999998
+      },
+      {
+        "trip_id": 455,
+        "driver_id": 16,
+        "customer_id": 43,
+        "total_amount": 26.17
+      },
+      {
+        "trip_id": 456,
+        "driver_id": 25,
+        "customer_id": 187,
+        "total_amount": 15.120000000000001
+      },
+      {
+        "trip_id": 457,
+        "driver_id": 7,
+        "customer_id": 52,
+        "total_amount": 15.959999999999999
+      },
+      {
+        "trip_id": 462,
+        "driver_id": 5,
+        "customer_id": 160,
+        "total_amount": 8.55
+      },
+      {
+        "trip_id": 464,
+        "driver_id": 49,
+        "customer_id": 86,
+        "total_amount": 52.72
+      },
+      {
+        "trip_id": 467,
+        "driver_id": 48,
+        "customer_id": 88,
+        "total_amount": 34.16
+      },
+      {
+        "trip_id": 470,
+        "driver_id": 39,
+        "customer_id": 43,
+        "total_amount": 27.68
+      },
+      {
+        "trip_id": 474,
+        "driver_id": 33,
+        "customer_id": 76,
+        "total_amount": 17.76
+      },
+      {
+        "trip_id": 477,
+        "driver_id": 14,
+        "customer_id": 100,
+        "total_amount": 9.57
+      },
+      {
+        "trip_id": 479,
+        "driver_id": 40,
+        "customer_id": 168,
+        "total_amount": 14.09
+      },
+      {
+        "trip_id": 489,
+        "driver_id": 14,
+        "customer_id": 13,
+        "total_amount": 15.84
+      },
+      {
+        "trip_id": 491,
+        "driver_id": 22,
+        "customer_id": 198,
+        "total_amount": 43.1
+      },
+      {
+        "trip_id": 493,
+        "driver_id": 16,
+        "customer_id": 170,
+        "total_amount": 39.19
+      },
+      {
+        "trip_id": 494,
+        "driver_id": 31,
+        "customer_id": 65,
+        "total_amount": 39.85
+      },
+      {
+        "trip_id": 497,
+        "driver_id": 1,
+        "customer_id": 76,
+        "total_amount": 23.71
+      },
+      {
+        "trip_id": 504,
+        "driver_id": 47,
+        "customer_id": 40,
+        "total_amount": 40.89
+      },
+      {
+        "trip_id": 506,
+        "driver_id": 1,
+        "customer_id": 194,
+        "total_amount": 21.27
+      },
+      {
+        "trip_id": 508,
+        "driver_id": 30,
+        "customer_id": 167,
+        "total_amount": 37.01
+      },
+      {
+        "trip_id": 509,
+        "driver_id": 21,
+        "customer_id": 183,
+        "total_amount": 49.559999999999995
+      },
+      {
+        "trip_id": 511,
+        "driver_id": 13,
+        "customer_id": 146,
+        "total_amount": 35.97
+      },
+      {
+        "trip_id": 513,
+        "driver_id": 47,
+        "customer_id": 166,
+        "total_amount": 50.989999999999995
+      },
+      {
+        "trip_id": 514,
+        "driver_id": 10,
+        "customer_id": 109,
+        "total_amount": 48.64
+      },
+      {
+        "trip_id": 517,
+        "driver_id": 37,
+        "customer_id": 44,
+        "total_amount": 20.12
+      },
+      {
+        "trip_id": 521,
+        "driver_id": 19,
+        "customer_id": 89,
+        "total_amount": 33.57
+      },
+      {
+        "trip_id": 526,
+        "driver_id": 8,
+        "customer_id": 176,
+        "total_amount": 34.62
+      },
+      {
+        "trip_id": 528,
+        "driver_id": 34,
+        "customer_id": 8,
+        "total_amount": 41.89
+      },
+      {
+        "trip_id": 529,
+        "driver_id": 28,
+        "customer_id": 135,
+        "total_amount": 34.71
+      },
+      {
+        "trip_id": 532,
+        "driver_id": 46,
+        "customer_id": 28,
+        "total_amount": 14.049999999999999
+      },
+      {
+        "trip_id": 537,
+        "driver_id": 44,
+        "customer_id": 174,
+        "total_amount": 43.5
+      },
+      {
+        "trip_id": 544,
+        "driver_id": 37,
+        "customer_id": 13,
+        "total_amount": 55.55
+      },
+      {
+        "trip_id": 548,
+        "driver_id": 8,
+        "customer_id": 127,
+        "total_amount": 22.709999999999997
+      },
+      {
+        "trip_id": 549,
+        "driver_id": 33,
+        "customer_id": 145,
+        "total_amount": 41.33
+      },
+      {
+        "trip_id": 558,
+        "driver_id": 7,
+        "customer_id": 89,
+        "total_amount": 16.25
+      },
+      {
+        "trip_id": 559,
+        "driver_id": 26,
+        "customer_id": 124,
+        "total_amount": 22.09
+      },
+      {
+        "trip_id": 563,
+        "driver_id": 36,
+        "customer_id": 150,
+        "total_amount": 27.23
+      },
+      {
+        "trip_id": 569,
+        "driver_id": 40,
+        "customer_id": 81,
+        "total_amount": 8.299999999999999
+      },
+      {
+        "trip_id": 570,
+        "driver_id": 11,
+        "customer_id": 11,
+        "total_amount": 49.61
+      },
+      {
+        "trip_id": 578,
+        "driver_id": 20,
+        "customer_id": 79,
+        "total_amount": 23.21
+      },
+      {
+        "trip_id": 589,
+        "driver_id": 22,
+        "customer_id": 186,
+        "total_amount": 17.099999999999998
+      },
+      {
+        "trip_id": 592,
+        "driver_id": 48,
+        "customer_id": 53,
+        "total_amount": 22.24
+      },
+      {
+        "trip_id": 594,
+        "driver_id": 37,
+        "customer_id": 147,
+        "total_amount": 9.3
+      },
+      {
+        "trip_id": 597,
+        "driver_id": 50,
+        "customer_id": 119,
+        "total_amount": 20.76
+      },
+      {
+        "trip_id": 598,
+        "driver_id": 3,
+        "customer_id": 14,
+        "total_amount": 16.3
+      },
+      {
+        "trip_id": 599,
+        "driver_id": 19,
+        "customer_id": 159,
+        "total_amount": 19.24
+      },
+      {
+        "trip_id": 602,
+        "driver_id": 5,
+        "customer_id": 7,
+        "total_amount": 37.97
+      },
+      {
+        "trip_id": 605,
+        "driver_id": 25,
+        "customer_id": 51,
+        "total_amount": 7.75
+      },
+      {
+        "trip_id": 611,
+        "driver_id": 37,
+        "customer_id": 72,
+        "total_amount": 7.5
+      },
+      {
+        "trip_id": 613,
+        "driver_id": 35,
+        "customer_id": 199,
+        "total_amount": 24.77
+      },
+      {
+        "trip_id": 614,
+        "driver_id": 49,
+        "customer_id": 99,
+        "total_amount": 53.27
+      },
+      {
+        "trip_id": 615,
+        "driver_id": 17,
+        "customer_id": 4,
+        "total_amount": 40.09
+      },
+      {
+        "trip_id": 618,
+        "driver_id": 25,
+        "customer_id": 162,
+        "total_amount": 35.23
+      },
+      {
+        "trip_id": 630,
+        "driver_id": 33,
+        "customer_id": 135,
+        "total_amount": 43.45
+      },
+      {
+        "trip_id": 647,
+        "driver_id": 37,
+        "customer_id": 167,
+        "total_amount": 7.6
+      },
+      {
+        "trip_id": 649,
+        "driver_id": 42,
+        "customer_id": 26,
+        "total_amount": 11.59
+      },
+      {
+        "trip_id": 652,
+        "driver_id": 39,
+        "customer_id": 2,
+        "total_amount": 6.909999999999999
+      },
+      {
+        "trip_id": 657,
+        "driver_id": 10,
+        "customer_id": 165,
+        "total_amount": 34.66
+      },
+      {
+        "trip_id": 661,
+        "driver_id": 42,
+        "customer_id": 105,
+        "total_amount": 44.120000000000005
+      },
+      {
+        "trip_id": 669,
+        "driver_id": 49,
+        "customer_id": 179,
+        "total_amount": 34.59
+      },
+      {
+        "trip_id": 678,
+        "driver_id": 35,
+        "customer_id": 12,
+        "total_amount": 30.44
+      },
+      {
+        "trip_id": 679,
+        "driver_id": 28,
+        "customer_id": 107,
+        "total_amount": 35.25
+      },
+      {
+        "trip_id": 692,
+        "driver_id": 38,
+        "customer_id": 58,
+        "total_amount": 32.71
+      },
+      {
+        "trip_id": 699,
+        "driver_id": 48,
+        "customer_id": 120,
+        "total_amount": 44.61
+      },
+      {
+        "trip_id": 700,
+        "driver_id": 37,
+        "customer_id": 98,
+        "total_amount": 18.17
+      },
+      {
+        "trip_id": 703,
+        "driver_id": 27,
+        "customer_id": 3,
+        "total_amount": 35.7
+      },
+      {
+        "trip_id": 706,
+        "driver_id": 16,
+        "customer_id": 194,
+        "total_amount": 20.689999999999998
+      },
+      {
+        "trip_id": 709,
+        "driver_id": 49,
+        "customer_id": 18,
+        "total_amount": 43.94
+      },
+      {
+        "trip_id": 710,
+        "driver_id": 45,
+        "customer_id": 164,
+        "total_amount": 50.94
+      },
+      {
+        "trip_id": 716,
+        "driver_id": 41,
+        "customer_id": 154,
+        "total_amount": 42.809999999999995
+      },
+      {
+        "trip_id": 719,
+        "driver_id": 18,
+        "customer_id": 60,
+        "total_amount": 7.94
+      },
+      {
+        "trip_id": 723,
+        "driver_id": 10,
+        "customer_id": 36,
+        "total_amount": 7.5
+      },
+      {
+        "trip_id": 724,
+        "driver_id": 36,
+        "customer_id": 130,
+        "total_amount": 11.91
+      },
+      {
+        "trip_id": 730,
+        "driver_id": 43,
+        "customer_id": 34,
+        "total_amount": 39.79
+      },
+      {
+        "trip_id": 734,
+        "driver_id": 35,
+        "customer_id": 13,
+        "total_amount": 38.21
+      },
+      {
+        "trip_id": 738,
+        "driver_id": 44,
+        "customer_id": 127,
+        "total_amount": 9.06
+      },
+      {
+        "trip_id": 742,
+        "driver_id": 49,
+        "customer_id": 125,
+        "total_amount": 9.770000000000001
+      },
+      {
+        "trip_id": 746,
+        "driver_id": 41,
+        "customer_id": 39,
+        "total_amount": 46.42
+      },
+      {
+        "trip_id": 748,
+        "driver_id": 42,
+        "customer_id": 21,
+        "total_amount": 39.71
+      },
+      {
+        "trip_id": 750,
+        "driver_id": 23,
+        "customer_id": 39,
+        "total_amount": 5.18
+      },
+      {
+        "trip_id": 751,
+        "driver_id": 42,
+        "customer_id": 49,
+        "total_amount": 35.74
+      },
+      {
+        "trip_id": 752,
+        "driver_id": 15,
+        "customer_id": 30,
+        "total_amount": 16.580000000000002
+      },
+      {
+        "trip_id": 753,
+        "driver_id": 24,
+        "customer_id": 23,
+        "total_amount": 31.17
+      },
+      {
+        "trip_id": 755,
+        "driver_id": 22,
+        "customer_id": 81,
+        "total_amount": 45.41
+      },
+      {
+        "trip_id": 761,
+        "driver_id": 5,
+        "customer_id": 155,
+        "total_amount": 20.01
+      },
+      {
+        "trip_id": 764,
+        "driver_id": 37,
+        "customer_id": 172,
+        "total_amount": 51.03
+      },
+      {
+        "trip_id": 766,
+        "driver_id": 26,
+        "customer_id": 131,
+        "total_amount": 12.93
+      },
+      {
+        "trip_id": 768,
+        "driver_id": 31,
+        "customer_id": 130,
+        "total_amount": 16.73
+      },
+      {
+        "trip_id": 769,
+        "driver_id": 1,
+        "customer_id": 159,
+        "total_amount": 32.15
+      },
+      {
+        "trip_id": 771,
+        "driver_id": 36,
+        "customer_id": 30,
+        "total_amount": 11.620000000000001
+      },
+      {
+        "trip_id": 778,
+        "driver_id": 14,
+        "customer_id": 134,
+        "total_amount": 35.36
+      },
+      {
+        "trip_id": 780,
+        "driver_id": 44,
+        "customer_id": 71,
+        "total_amount": 42.21
+      },
+      {
+        "trip_id": 781,
+        "driver_id": 17,
+        "customer_id": 109,
+        "total_amount": 24.84
+      },
+      {
+        "trip_id": 783,
+        "driver_id": 38,
+        "customer_id": 142,
+        "total_amount": 17.62
+      },
+      {
+        "trip_id": 784,
+        "driver_id": 41,
+        "customer_id": 53,
+        "total_amount": 17.3
+      },
+      {
+        "trip_id": 785,
+        "driver_id": 31,
+        "customer_id": 116,
+        "total_amount": 27.11
+      },
+      {
+        "trip_id": 786,
+        "driver_id": 40,
+        "customer_id": 3,
+        "total_amount": 51.13
+      },
+      {
+        "trip_id": 788,
+        "driver_id": 21,
+        "customer_id": 171,
+        "total_amount": 58.540000000000006
+      },
+      {
+        "trip_id": 791,
+        "driver_id": 29,
+        "customer_id": 182,
+        "total_amount": 5.72
+      },
+      {
+        "trip_id": 803,
+        "driver_id": 10,
+        "customer_id": 157,
+        "total_amount": 44.62
+      },
+      {
+        "trip_id": 806,
+        "driver_id": 44,
+        "customer_id": 87,
+        "total_amount": 36.900000000000006
+      },
+      {
+        "trip_id": 807,
+        "driver_id": 24,
+        "customer_id": 91,
+        "total_amount": 28.82
+      },
+      {
+        "trip_id": 808,
+        "driver_id": 23,
+        "customer_id": 11,
+        "total_amount": 39.330000000000005
+      },
+      {
+        "trip_id": 819,
+        "driver_id": 47,
+        "customer_id": 105,
+        "total_amount": 27.28
+      },
+      {
+        "trip_id": 824,
+        "driver_id": 32,
+        "customer_id": 161,
+        "total_amount": 22.31
+      },
+      {
+        "trip_id": 830,
+        "driver_id": 41,
+        "customer_id": 181,
+        "total_amount": 34.25
+      },
+      {
+        "trip_id": 835,
+        "driver_id": 7,
+        "customer_id": 160,
+        "total_amount": 29.74
+      },
+      {
+        "trip_id": 836,
+        "driver_id": 33,
+        "customer_id": 39,
+        "total_amount": 27.75
+      },
+      {
+        "trip_id": 838,
+        "driver_id": 9,
+        "customer_id": 85,
+        "total_amount": 44.839999999999996
+      },
+      {
+        "trip_id": 844,
+        "driver_id": 47,
+        "customer_id": 96,
+        "total_amount": 17.16
+      },
+      {
+        "trip_id": 850,
+        "driver_id": 24,
+        "customer_id": 52,
+        "total_amount": 28.67
+      },
+      {
+        "trip_id": 851,
+        "driver_id": 3,
+        "customer_id": 103,
+        "total_amount": 18.22
+      },
+      {
+        "trip_id": 857,
+        "driver_id": 43,
+        "customer_id": 163,
+        "total_amount": 31.24
+      },
+      {
+        "trip_id": 858,
+        "driver_id": 17,
+        "customer_id": 94,
+        "total_amount": 10.32
+      },
+      {
+        "trip_id": 860,
+        "driver_id": 20,
+        "customer_id": 193,
+        "total_amount": 43.64
+      },
+      {
+        "trip_id": 871,
+        "driver_id": 6,
+        "customer_id": 46,
+        "total_amount": 51.339999999999996
+      },
+      {
+        "trip_id": 886,
+        "driver_id": 17,
+        "customer_id": 139,
+        "total_amount": 38.199999999999996
+      },
+      {
+        "trip_id": 887,
+        "driver_id": 11,
+        "customer_id": 180,
+        "total_amount": 27.05
+      },
+      {
+        "trip_id": 899,
+        "driver_id": 32,
+        "customer_id": 33,
+        "total_amount": 47.199999999999996
+      },
+      {
+        "trip_id": 902,
+        "driver_id": 30,
+        "customer_id": 20,
+        "total_amount": 12.88
+      },
+      {
+        "trip_id": 904,
+        "driver_id": 44,
+        "customer_id": 145,
+        "total_amount": 7.6
+      },
+      {
+        "trip_id": 912,
+        "driver_id": 27,
+        "customer_id": 196,
+        "total_amount": 47.760000000000005
+      },
+      {
+        "trip_id": 920,
+        "driver_id": 4,
+        "customer_id": 112,
+        "total_amount": 6.26
+      },
+      {
+        "trip_id": 922,
+        "driver_id": 50,
+        "customer_id": 9,
+        "total_amount": 44.47
+      },
+      {
+        "trip_id": 929,
+        "driver_id": 50,
+        "customer_id": 61,
+        "total_amount": 6.11
+      },
+      {
+        "trip_id": 931,
+        "driver_id": 29,
+        "customer_id": 134,
+        "total_amount": 30.03
+      },
+      {
+        "trip_id": 935,
+        "driver_id": 4,
+        "customer_id": 184,
+        "total_amount": 11.25
+      },
+      {
+        "trip_id": 936,
+        "driver_id": 42,
+        "customer_id": 120,
+        "total_amount": 8.32
+      },
+      {
+        "trip_id": 947,
+        "driver_id": 8,
+        "customer_id": 132,
+        "total_amount": 24.86
+      },
+      {
+        "trip_id": 948,
+        "driver_id": 43,
+        "customer_id": 176,
+        "total_amount": 20.54
+      },
+      {
+        "trip_id": 953,
+        "driver_id": 45,
+        "customer_id": 44,
+        "total_amount": 7.68
+      },
+      {
+        "trip_id": 955,
+        "driver_id": 47,
+        "customer_id": 163,
+        "total_amount": 40.33
+      },
+      {
+        "trip_id": 959,
+        "driver_id": 34,
+        "customer_id": 166,
+        "total_amount": 33.59
+      },
+      {
+        "trip_id": 960,
+        "driver_id": 39,
+        "customer_id": 60,
+        "total_amount": 42.3
+      },
+      {
+        "trip_id": 962,
+        "driver_id": 6,
+        "customer_id": 16,
+        "total_amount": 40.79
+      },
+      {
+        "trip_id": 965,
+        "driver_id": 37,
+        "customer_id": 75,
+        "total_amount": 50.09
+      },
+      {
+        "trip_id": 967,
+        "driver_id": 23,
+        "customer_id": 50,
+        "total_amount": 28.880000000000003
+      },
+      {
+        "trip_id": 968,
+        "driver_id": 6,
+        "customer_id": 78,
+        "total_amount": 26.380000000000003
+      },
+      {
+        "trip_id": 971,
+        "driver_id": 18,
+        "customer_id": 122,
+        "total_amount": 31.450000000000003
+      },
+      {
+        "trip_id": 975,
+        "driver_id": 31,
+        "customer_id": 69,
+        "total_amount": 33.92
+      },
+      {
+        "trip_id": 976,
+        "driver_id": 17,
+        "customer_id": 26,
+        "total_amount": 12.739999999999998
+      },
+      {
+        "trip_id": 979,
+        "driver_id": 10,
+        "customer_id": 53,
+        "total_amount": 19.72
+      },
+      {
+        "trip_id": 980,
+        "driver_id": 43,
+        "customer_id": 138,
+        "total_amount": 45.42
+      },
+      {
+        "trip_id": 990,
+        "driver_id": 45,
+        "customer_id": 48,
+        "total_amount": 30.43
+      },
+      {
+        "trip_id": 992,
+        "driver_id": 8,
+        "customer_id": 109,
+        "total_amount": 33.440000000000005
+      },
+      {
+        "trip_id": 997,
+        "driver_id": 31,
+        "customer_id": 153,
+        "total_amount": 34.32
+      }
+    ]
+  },
+  {
+    "question": "What are the names of all cities in California?",
+    "sql": "SELECT city_name FROM cities WHERE state = 'California'",
+    "category": "simple_filtering",
+    "expected_result": [
+      {
+        "city_name": "Los Angeles"
+      },
+      {
+        "city_name": "San Francisco"
+      }
+    ]
+  },
+  {
+    "question": "How many trips does each city have?",
+    "sql": "SELECT c.city_name, COUNT(t.trip_id) as trip_count FROM cities c LEFT JOIN trips t ON c.city_id = t.pickup_city_id GROUP BY c.city_id, c.city_name ORDER BY trip_count DESC",
+    "category": "simple_aggregation",
+    "expected_result": [
+      {
+        "city_name": "Chicago",
+        "trip_count": 115
+      },
+      {
+        "city_name": "Seattle",
+        "trip_count": 110
+      },
+      {
+        "city_name": "Portland",
+        "trip_count": 110
+      },
+      {
+        "city_name": "Boston",
+        "trip_count": 100
+      },
+      {
+        "city_name": "New York",
+        "trip_count": 96
+      },
+      {
+        "city_name": "Austin",
+        "trip_count": 96
+      },
+      {
+        "city_name": "Denver",
+        "trip_count": 96
+      },
+      {
+        "city_name": "Miami",
+        "trip_count": 95
+      },
+      {
+        "city_name": "San Francisco",
+        "trip_count": 94
+      },
+      {
+        "city_name": "Los Angeles",
+        "trip_count": 88
+      }
+    ]
+  },
+  {
+    "question": "What is the total number of trips in the database?",
+    "sql": "SELECT COUNT(*) as total_trips FROM trips",
+    "category": "simple_aggregation",
+    "expected_result": [
+      {
+        "total_trips": 1000
+      }
+    ]
+  },
+  {
+    "question": "What is the average trip amount?",
+    "sql": "SELECT AVG(total_amount) as avg_amount FROM trips",
+    "category": "simple_aggregation",
+    "expected_result": [
+      {
+        "avg_amount": 29.6038
+      }
+    ]
+  },
+  {
+    "question": "How many drivers are in each city?",
+    "sql": "SELECT c.city_name, COUNT(d.driver_id) as driver_count FROM cities c LEFT JOIN drivers d ON c.city_id = d.city_id GROUP BY c.city_id, c.city_name ORDER BY driver_count DESC",
+    "category": "simple_aggregation",
+    "expected_result": [
+      {
+        "city_name": "San Francisco",
+        "driver_count": 10
+      },
+      {
+        "city_name": "Miami",
+        "driver_count": 8
+      },
+      {
+        "city_name": "Denver",
+        "driver_count": 6
+      },
+      {
+        "city_name": "Portland",
+        "driver_count": 6
+      },
+      {
+        "city_name": "Chicago",
+        "driver_count": 4
+      },
+      {
+        "city_name": "Austin",
+        "driver_count": 4
+      },
+      {
+        "city_name": "Seattle",
+        "driver_count": 3
+      },
+      {
+        "city_name": "Los Angeles",
+        "driver_count": 3
+      },
+      {
+        "city_name": "New York",
+        "driver_count": 3
+      },
+      {
+        "city_name": "Boston",
+        "driver_count": 3
+      }
+    ]
+  },
+  {
+    "question": "What are the top 5 cities by total trip revenue?",
+    "sql": "SELECT c.city_name, SUM(t.total_amount) as total_revenue FROM cities c JOIN trips t ON c.city_id = t.pickup_city_id GROUP BY c.city_id, c.city_name ORDER BY total_revenue DESC LIMIT 5",
+    "category": "aggregation_with_joins",
+    "expected_result": [
+      {
+        "city_name": "Chicago",
+        "total_revenue": 3356.0
+      },
+      {
+        "city_name": "Seattle",
+        "total_revenue": 3306.01
+      },
+      {
+        "city_name": "Portland",
+        "total_revenue": 3289.11
+      },
+      {
+        "city_name": "New York",
+        "total_revenue": 3264.36
+      },
+      {
+        "city_name": "Denver",
+        "total_revenue": 2921.93
+      }
+    ]
+  },
+  {
+    "question": "Which driver has completed the most trips?",
+    "sql": "SELECT d.first_name || ' ' || d.last_name as driver_name, COUNT(t.trip_id) as trip_count FROM drivers d JOIN trips t ON d.driver_id = t.driver_id WHERE t.trip_status = 'completed' GROUP BY d.driver_id, d.first_name, d.last_name ORDER BY trip_count DESC LIMIT 1",
+    "category": "aggregation_with_joins",
+    "expected_result": [
+      {
+        "driver_name": "James Williams",
+        "trip_count": 11
+      }
+    ]
+  },
+  {
+    "question": "What is the average rating for each driver?",
+    "sql": "SELECT d.first_name || ' ' || d.last_name as driver_name, AVG(t.rating) as avg_rating FROM drivers d LEFT JOIN trips t ON d.driver_id = t.driver_id AND t.rating IS NOT NULL GROUP BY d.driver_id, d.first_name, d.last_name HAVING COUNT(t.rating) > 0 ORDER BY avg_rating DESC",
+    "category": "aggregation_with_joins",
+    "expected_result": [
+      {
+        "driver_name": "Jessica Jones",
+        "avg_rating": 4.333333333333333
+      },
+      {
+        "driver_name": "Emily Brown",
+        "avg_rating": 4.25
+      },
+      {
+        "driver_name": "James Davis",
+        "avg_rating": 4.25
+      },
+      {
+        "driver_name": "Lisa Miller",
+        "avg_rating": 4.0
+      },
+      {
+        "driver_name": "Sarah Miller",
+        "avg_rating": 4.0
+      },
+      {
+        "driver_name": "John Davis",
+        "avg_rating": 4.0
+      },
+      {
+        "driver_name": "Sarah Smith",
+        "avg_rating": 4.0
+      },
+      {
+        "driver_name": "David Smith",
+        "avg_rating": 4.0
+      },
+      {
+        "driver_name": "Jessica Miller",
+        "avg_rating": 3.8333333333333335
+      },
+      {
+        "driver_name": "Robert Rodriguez",
+        "avg_rating": 3.75
+      },
+      {
+        "driver_name": "Lisa Garcia",
+        "avg_rating": 3.75
+      },
+      {
+        "driver_name": "Jessica Garcia",
+        "avg_rating": 3.6666666666666665
+      },
+      {
+        "driver_name": "Jessica Smith",
+        "avg_rating": 3.5
+      },
+      {
+        "driver_name": "Sarah Brown",
+        "avg_rating": 3.5
+      },
+      {
+        "driver_name": "James Williams",
+        "avg_rating": 3.5
+      },
+      {
+        "driver_name": "James Jones",
+        "avg_rating": 3.5
+      },
+      {
+        "driver_name": "James Martinez",
+        "avg_rating": 3.5
+      },
+      {
+        "driver_name": "James Williams",
+        "avg_rating": 3.4444444444444446
+      },
+      {
+        "driver_name": "Sarah Martinez",
+        "avg_rating": 3.3333333333333335
+      },
+      {
+        "driver_name": "James Miller",
+        "avg_rating": 3.2857142857142856
+      },
+      {
+        "driver_name": "Sarah Miller",
+        "avg_rating": 3.25
+      },
+      {
+        "driver_name": "Emily Johnson",
+        "avg_rating": 3.25
+      },
+      {
+        "driver_name": "Lisa Smith",
+        "avg_rating": 3.25
+      },
+      {
+        "driver_name": "Robert Rodriguez",
+        "avg_rating": 3.0
+      },
+      {
+        "driver_name": "Amanda Rodriguez",
+        "avg_rating": 3.0
+      },
+      {
+        "driver_name": "Emily Jones",
+        "avg_rating": 3.0
+      },
+      {
+        "driver_name": "David Martinez",
+        "avg_rating": 3.0
+      },
+      {
+        "driver_name": "James Martinez",
+        "avg_rating": 3.0
+      },
+      {
+        "driver_name": "Robert Davis",
+        "avg_rating": 3.0
+      },
+      {
+        "driver_name": "Robert Martinez",
+        "avg_rating": 2.8
+      },
+      {
+        "driver_name": "Emily Miller",
+        "avg_rating": 2.8
+      },
+      {
+        "driver_name": "Michael Brown",
+        "avg_rating": 2.7142857142857144
+      },
+      {
+        "driver_name": "Emily Garcia",
+        "avg_rating": 2.6666666666666665
+      },
+      {
+        "driver_name": "Robert Smith",
+        "avg_rating": 2.6666666666666665
+      },
+      {
+        "driver_name": "David Martinez",
+        "avg_rating": 2.6666666666666665
+      },
+      {
+        "driver_name": "John Martinez",
+        "avg_rating": 2.5
+      },
+      {
+        "driver_name": "Michael Williams",
+        "avg_rating": 2.5
+      },
+      {
+        "driver_name": "David Davis",
+        "avg_rating": 2.5
+      },
+      {
+        "driver_name": "Michael Miller",
+        "avg_rating": 2.4
+      },
+      {
+        "driver_name": "Emily Williams",
+        "avg_rating": 2.3333333333333335
+      },
+      {
+        "driver_name": "Emily Williams",
+        "avg_rating": 2.1666666666666665
+      },
+      {
+        "driver_name": "John Martinez",
+        "avg_rating": 2.142857142857143
+      },
+      {
+        "driver_name": "James Johnson",
+        "avg_rating": 2.0
+      },
+      {
+        "driver_name": "James Martinez",
+        "avg_rating": 2.0
+      },
+      {
+        "driver_name": "Lisa Brown",
+        "avg_rating": 2.0
+      },
+      {
+        "driver_name": "Robert Williams",
+        "avg_rating": 1.75
+      },
+      {
+        "driver_name": "John Jones",
+        "avg_rating": 1.5
+      },
+      {
+        "driver_name": "Lisa Rodriguez",
+        "avg_rating": 1.25
+      },
+      {
+        "driver_name": "Emily Smith",
+        "avg_rating": 1.0
+      },
+      {
+        "driver_name": "Jessica Miller",
+        "avg_rating": 1.0
+      }
+    ]
+  },
+  {
+    "question": "What is the total revenue generated by each vehicle type?",
+    "sql": "SELECT v.vehicle_type, SUM(t.total_amount) as total_revenue FROM vehicles v JOIN trips t ON v.vehicle_id = t.vehicle_id GROUP BY v.vehicle_type ORDER BY total_revenue DESC",
+    "category": "aggregation_with_joins",
+    "expected_result": [
+      {
+        "vehicle_type": "suv",
+        "total_revenue": 8388.6
+      },
+      {
+        "vehicle_type": "sedan",
+        "total_revenue": 8345.85
+      },
+      {
+        "vehicle_type": "luxury",
+        "total_revenue": 7072.25
+      },
+      {
+        "vehicle_type": "economy",
+        "total_revenue": 5797.1
+      }
+    ]
+  },
+  {
+    "question": "How many trips were completed in the last 7 days?",
+    "sql": "SELECT COUNT(*) as trip_count FROM trips WHERE trip_status = 'completed' AND pickup_time >= datetime('now', '-7 days')",
+    "category": "date_filtering",
+    "expected_result": [
+      {
+        "trip_count": 71
+      }
+    ]
+  },
+  {
+    "question": "What is the total revenue from completed trips in December 2025?",
+    "sql": "SELECT SUM(total_amount) as total_revenue FROM trips WHERE trip_status = 'completed' AND strftime('%Y-%m', pickup_time) = '2025-12'",
+    "category": "date_filtering",
+    "expected_result": [
+      {
+        "total_revenue": 5268.74
+      }
+    ]
+  },
+  {
+    "question": "List all trips scheduled for today",
+    "sql": "SELECT trip_id, driver_id, customer_id, pickup_time FROM trips WHERE trip_status = 'scheduled' AND date(pickup_time) = date('now')",
+    "category": "date_filtering",
+    "expected_result": [
+      {
+        "trip_id": 230,
+        "driver_id": 28,
+        "customer_id": 155,
+        "pickup_time": "2026-01-07T11:53:26.910077"
+      },
+      {
+        "trip_id": 390,
+        "driver_id": 42,
+        "customer_id": 137,
+        "pickup_time": "2026-01-07T19:24:26.910077"
+      },
+      {
+        "trip_id": 525,
+        "driver_id": 44,
+        "customer_id": 179,
+        "pickup_time": "2026-01-07T02:37:26.910077"
+      },
+      {
+        "trip_id": 568,
+        "driver_id": 6,
+        "customer_id": 125,
+        "pickup_time": "2026-01-07T16:54:26.910077"
+      },
+      {
+        "trip_id": 701,
+        "driver_id": 27,
+        "customer_id": 7,
+        "pickup_time": "2026-01-07T00:47:26.910077"
+      },
+      {
+        "trip_id": 816,
+        "driver_id": 14,
+        "customer_id": 162,
+        "pickup_time": "2026-01-07T23:34:26.910077"
+      }
+    ]
+  },
+  {
+    "question": "Show trip details with driver name, customer name, and pickup city",
+    "sql": "SELECT t.trip_id, d.first_name || ' ' || d.last_name as driver_name, c.first_name || ' ' || c.last_name as customer_name, ci.city_name as pickup_city, t.total_amount FROM trips t JOIN drivers d ON t.driver_id = d.driver_id JOIN customers c ON t.customer_id = c.customer_id JOIN cities ci ON t.pickup_city_id = ci.city_id LIMIT 10",
+    "category": "complex_joins",
+    "expected_result": [
+      {
+        "trip_id": 1,
+        "driver_name": "James Martinez",
+        "customer_name": "James Miller",
+        "pickup_city": "Chicago",
+        "total_amount": 9.040000000000001
+      },
+      {
+        "trip_id": 2,
+        "driver_name": "James Jones",
+        "customer_name": "David Smith",
+        "pickup_city": "Seattle",
+        "total_amount": 53.06
+      },
+      {
+        "trip_id": 3,
+        "driver_name": "Amanda Rodriguez",
+        "customer_name": "Lisa Martinez",
+        "pickup_city": "Miami",
+        "total_amount": 28.48
+      },
+      {
+        "trip_id": 4,
+        "driver_name": "David Martinez",
+        "customer_name": "John Williams",
+        "pickup_city": "Austin",
+        "total_amount": 9.35
+      },
+      {
+        "trip_id": 5,
+        "driver_name": "John Martinez",
+        "customer_name": "Amanda Garcia",
+        "pickup_city": "Denver",
+        "total_amount": 49.61
+      },
+      {
+        "trip_id": 6,
+        "driver_name": "John Jones",
+        "customer_name": "Emily Rodriguez",
+        "pickup_city": "New York",
+        "total_amount": 17.11
+      },
+      {
+        "trip_id": 7,
+        "driver_name": "James Miller",
+        "customer_name": "David Smith",
+        "pickup_city": "Miami",
+        "total_amount": 32.43
+      },
+      {
+        "trip_id": 8,
+        "driver_name": "Emily Williams",
+        "customer_name": "John Rodriguez",
+        "pickup_city": "Seattle",
+        "total_amount": 21.38
+      },
+      {
+        "trip_id": 9,
+        "driver_name": "Sarah Miller",
+        "customer_name": "Amanda Rodriguez",
+        "pickup_city": "Denver",
+        "total_amount": 49.15
+      },
+      {
+        "trip_id": 10,
+        "driver_name": "James Williams",
+        "customer_name": "David Williams",
+        "pickup_city": "Portland",
+        "total_amount": 7.2
+      }
+    ]
+  },
+  {
+    "question": "What are the top 5 customers by total spending?",
+    "sql": "SELECT c.first_name || ' ' || c.last_name as customer_name, SUM(t.total_amount) as total_spent FROM customers c JOIN trips t ON c.customer_id = t.customer_id WHERE t.trip_status = 'completed' GROUP BY c.customer_id, c.first_name, c.last_name ORDER BY total_spent DESC LIMIT 5",
+    "category": "complex_joins",
+    "expected_result": [
+      {
+        "customer_name": "Jessica Garcia",
+        "total_spent": 143.31
+      },
+      {
+        "customer_name": "Sarah Johnson",
+        "total_spent": 142.66
+      },
+      {
+        "customer_name": "Jessica Garcia",
+        "total_spent": 127.24000000000001
+      },
+      {
+        "customer_name": "Amanda Miller",
+        "total_spent": 123.24000000000001
+      },
+      {
+        "customer_name": "Lisa Martinez",
+        "total_spent": 104.30000000000001
+      }
+    ]
+  },
+  {
+    "question": "Which vehicle make and model has the most trips?",
+    "sql": "SELECT v.make, v.model, COUNT(t.trip_id) as trip_count FROM vehicles v JOIN trips t ON v.vehicle_id = t.vehicle_id GROUP BY v.make, v.model ORDER BY trip_count DESC LIMIT 1",
+    "category": "complex_joins",
+    "expected_result": [
+      {
+        "make": "Hyundai",
+        "model": "Camry",
+        "trip_count": 69
+      }
+    ]
+  },
+  {
+    "question": "List all trips in Seattle with driver names",
+    "sql": "SELECT t.trip_id, d.first_name || ' ' || d.last_name as driver_name, t.total_amount FROM trips t JOIN drivers d ON t.driver_id = d.driver_id JOIN cities c ON t.pickup_city_id = c.city_id WHERE c.city_name = 'Seattle'",
+    "category": "filtering_with_join",
+    "expected_result": [
+      {
+        "trip_id": 2,
+        "driver_name": "James Jones",
+        "total_amount": 53.06
+      },
+      {
+        "trip_id": 8,
+        "driver_name": "Emily Williams",
+        "total_amount": 21.38
+      },
+      {
+        "trip_id": 19,
+        "driver_name": "James Williams",
+        "total_amount": 45.35
+      },
+      {
+        "trip_id": 34,
+        "driver_name": "Sarah Smith",
+        "total_amount": 40.2
+      },
+      {
+        "trip_id": 50,
+        "driver_name": "Michael Miller",
+        "total_amount": 38.61
+      },
+      {
+        "trip_id": 62,
+        "driver_name": "James Williams",
+        "total_amount": 56.5
+      },
+      {
+        "trip_id": 65,
+        "driver_name": "Emily Smith",
+        "total_amount": 47.3
+      },
+      {
+        "trip_id": 71,
+        "driver_name": "Robert Williams",
+        "total_amount": 19.17
+      },
+      {
+        "trip_id": 75,
+        "driver_name": "Sarah Martinez",
+        "total_amount": 39.85
+      },
+      {
+        "trip_id": 104,
+        "driver_name": "Michael Miller",
+        "total_amount": 50.98
+      },
+      {
+        "trip_id": 106,
+        "driver_name": "Jessica Smith",
+        "total_amount": 34.76
+      },
+      {
+        "trip_id": 114,
+        "driver_name": "Emily Miller",
+        "total_amount": 25.97
+      },
+      {
+        "trip_id": 129,
+        "driver_name": "Robert Rodriguez",
+        "total_amount": 36.68
+      },
+      {
+        "trip_id": 137,
+        "driver_name": "Robert Williams",
+        "total_amount": 47.11
+      },
+      {
+        "trip_id": 144,
+        "driver_name": "Jessica Miller",
+        "total_amount": 37.28
+      },
+      {
+        "trip_id": 153,
+        "driver_name": "Robert Rodriguez",
+        "total_amount": 52.879999999999995
+      },
+      {
+        "trip_id": 163,
+        "driver_name": "David Smith",
+        "total_amount": 39.91
+      },
+      {
+        "trip_id": 172,
+        "driver_name": "James Davis",
+        "total_amount": 49.81
+      },
+      {
+        "trip_id": 174,
+        "driver_name": "Sarah Miller",
+        "total_amount": 9.4
+      },
+      {
+        "trip_id": 178,
+        "driver_name": "Jessica Miller",
+        "total_amount": 12.04
+      },
+      {
+        "trip_id": 197,
+        "driver_name": "Emily Johnson",
+        "total_amount": 56.379999999999995
+      },
+      {
+        "trip_id": 213,
+        "driver_name": "James Williams",
+        "total_amount": 17.4
+      },
+      {
+        "trip_id": 215,
+        "driver_name": "Jessica Garcia",
+        "total_amount": 31.38
+      },
+      {
+        "trip_id": 233,
+        "driver_name": "Emily Garcia",
+        "total_amount": 22.75
+      },
+      {
+        "trip_id": 246,
+        "driver_name": "Emily Jones",
+        "total_amount": 18.02
+      },
+      {
+        "trip_id": 258,
+        "driver_name": "Emily Johnson",
+        "total_amount": 21.03
+      },
+      {
+        "trip_id": 267,
+        "driver_name": "Emily Williams",
+        "total_amount": 13.32
+      },
+      {
+        "trip_id": 283,
+        "driver_name": "Emily Brown",
+        "total_amount": 45.849999999999994
+      },
+      {
+        "trip_id": 300,
+        "driver_name": "Jessica Jones",
+        "total_amount": 10.33
+      },
+      {
+        "trip_id": 307,
+        "driver_name": "John Jones",
+        "total_amount": 42.550000000000004
+      },
+      {
+        "trip_id": 315,
+        "driver_name": "James Martinez",
+        "total_amount": 41.27
+      },
+      {
+        "trip_id": 343,
+        "driver_name": "Robert Rodriguez",
+        "total_amount": 11.75
+      },
+      {
+        "trip_id": 349,
+        "driver_name": "John Martinez",
+        "total_amount": 33.69
+      },
+      {
+        "trip_id": 350,
+        "driver_name": "Robert Rodriguez",
+        "total_amount": 32.12
+      },
+      {
+        "trip_id": 356,
+        "driver_name": "Lisa Smith",
+        "total_amount": 25.89
+      },
+      {
+        "trip_id": 359,
+        "driver_name": "Robert Martinez",
+        "total_amount": 29.89
+      },
+      {
+        "trip_id": 382,
+        "driver_name": "James Martinez",
+        "total_amount": 14.84
+      },
+      {
+        "trip_id": 389,
+        "driver_name": "Robert Rodriguez",
+        "total_amount": 52.230000000000004
+      },
+      {
+        "trip_id": 398,
+        "driver_name": "Sarah Martinez",
+        "total_amount": 43.0
+      },
+      {
+        "trip_id": 406,
+        "driver_name": "Emily Williams",
+        "total_amount": 30.8
+      },
+      {
+        "trip_id": 410,
+        "driver_name": "Robert Rodriguez",
+        "total_amount": 12.22
+      },
+      {
+        "trip_id": 413,
+        "driver_name": "James Johnson",
+        "total_amount": 40.78
+      },
+      {
+        "trip_id": 440,
+        "driver_name": "Emily Smith",
+        "total_amount": 45.1
+      },
+      {
+        "trip_id": 451,
+        "driver_name": "James Johnson",
+        "total_amount": 23.3
+      },
+      {
+        "trip_id": 462,
+        "driver_name": "Lisa Rodriguez",
+        "total_amount": 8.55
+      },
+      {
+        "trip_id": 463,
+        "driver_name": "Robert Rodriguez",
+        "total_amount": 36.18
+      },
+      {
+        "trip_id": 471,
+        "driver_name": "James Williams",
+        "total_amount": 12.48
+      },
+      {
+        "trip_id": 479,
+        "driver_name": "Robert Rodriguez",
+        "total_amount": 14.09
+      },
+      {
+        "trip_id": 504,
+        "driver_name": "Lisa Brown",
+        "total_amount": 40.89
+      },
+      {
+        "trip_id": 513,
+        "driver_name": "Lisa Brown",
+        "total_amount": 50.989999999999995
+      },
+      {
+        "trip_id": 514,
+        "driver_name": "James Miller",
+        "total_amount": 48.64
+      },
+      {
+        "trip_id": 516,
+        "driver_name": "Emily Garcia",
+        "total_amount": 38.42
+      },
+      {
+        "trip_id": 520,
+        "driver_name": "Robert Davis",
+        "total_amount": 30.02
+      },
+      {
+        "trip_id": 530,
+        "driver_name": "John Martinez",
+        "total_amount": 20.3
+      },
+      {
+        "trip_id": 531,
+        "driver_name": "Robert Davis",
+        "total_amount": 10.93
+      },
+      {
+        "trip_id": 532,
+        "driver_name": "David Davis",
+        "total_amount": 14.049999999999999
+      },
+      {
+        "trip_id": 537,
+        "driver_name": "James Martinez",
+        "total_amount": 43.5
+      },
+      {
+        "trip_id": 540,
+        "driver_name": "John Jones",
+        "total_amount": 12.33
+      },
+      {
+        "trip_id": 547,
+        "driver_name": "James Johnson",
+        "total_amount": 17.6
+      },
+      {
+        "trip_id": 551,
+        "driver_name": "Emily Jones",
+        "total_amount": 45.980000000000004
+      },
+      {
+        "trip_id": 563,
+        "driver_name": "James Jones",
+        "total_amount": 27.23
+      },
+      {
+        "trip_id": 569,
+        "driver_name": "Robert Rodriguez",
+        "total_amount": 8.299999999999999
+      },
+      {
+        "trip_id": 574,
+        "driver_name": "James Martinez",
+        "total_amount": 12.55
+      },
+      {
+        "trip_id": 583,
+        "driver_name": "Michael Miller",
+        "total_amount": 9.79
+      },
+      {
+        "trip_id": 587,
+        "driver_name": "David Martinez",
+        "total_amount": 30.23
+      },
+      {
+        "trip_id": 595,
+        "driver_name": "Jessica Jones",
+        "total_amount": 8.74
+      },
+      {
+        "trip_id": 605,
+        "driver_name": "Emily Williams",
+        "total_amount": 7.75
+      },
+      {
+        "trip_id": 614,
+        "driver_name": "James Davis",
+        "total_amount": 53.27
+      },
+      {
+        "trip_id": 622,
+        "driver_name": "Sarah Miller",
+        "total_amount": 20.5
+      },
+      {
+        "trip_id": 632,
+        "driver_name": "James Jones",
+        "total_amount": 38.79
+      },
+      {
+        "trip_id": 634,
+        "driver_name": "Lisa Smith",
+        "total_amount": 52.660000000000004
+      },
+      {
+        "trip_id": 656,
+        "driver_name": "David Smith",
+        "total_amount": 32.97
+      },
+      {
+        "trip_id": 658,
+        "driver_name": "James Williams",
+        "total_amount": 33.44
+      },
+      {
+        "trip_id": 659,
+        "driver_name": "Robert Williams",
+        "total_amount": 12.2
+      },
+      {
+        "trip_id": 669,
+        "driver_name": "James Davis",
+        "total_amount": 34.59
+      },
+      {
+        "trip_id": 678,
+        "driver_name": "Robert Davis",
+        "total_amount": 30.44
+      },
+      {
+        "trip_id": 689,
+        "driver_name": "John Jones",
+        "total_amount": 12.67
+      },
+      {
+        "trip_id": 698,
+        "driver_name": "Jessica Smith",
+        "total_amount": 48.27
+      },
+      {
+        "trip_id": 715,
+        "driver_name": "James Martinez",
+        "total_amount": 50.08
+      },
+      {
+        "trip_id": 716,
+        "driver_name": "James Martinez",
+        "total_amount": 42.809999999999995
+      },
+      {
+        "trip_id": 719,
+        "driver_name": "Jessica Garcia",
+        "total_amount": 7.94
+      },
+      {
+        "trip_id": 721,
+        "driver_name": "James Williams",
+        "total_amount": 20.72
+      },
+      {
+        "trip_id": 724,
+        "driver_name": "James Jones",
+        "total_amount": 11.91
+      },
+      {
+        "trip_id": 728,
+        "driver_name": "Lisa Garcia",
+        "total_amount": 50.370000000000005
+      },
+      {
+        "trip_id": 733,
+        "driver_name": "Michael Williams",
+        "total_amount": 28.78
+      },
+      {
+        "trip_id": 735,
+        "driver_name": "Lisa Smith",
+        "total_amount": 26.0
+      },
+      {
+        "trip_id": 752,
+        "driver_name": "Sarah Miller",
+        "total_amount": 16.580000000000002
+      },
+      {
+        "trip_id": 771,
+        "driver_name": "James Jones",
+        "total_amount": 11.620000000000001
+      },
+      {
+        "trip_id": 780,
+        "driver_name": "James Martinez",
+        "total_amount": 42.21
+      },
+      {
+        "trip_id": 794,
+        "driver_name": "John Davis",
+        "total_amount": 35.589999999999996
+      },
+      {
+        "trip_id": 818,
+        "driver_name": "John Davis",
+        "total_amount": 6.42
+      },
+      {
+        "trip_id": 823,
+        "driver_name": "Sarah Martinez",
+        "total_amount": 20.27
+      },
+      {
+        "trip_id": 836,
+        "driver_name": "James Martinez",
+        "total_amount": 27.75
+      },
+      {
+        "trip_id": 849,
+        "driver_name": "Robert Williams",
+        "total_amount": 18.0
+      },
+      {
+        "trip_id": 850,
+        "driver_name": "Robert Williams",
+        "total_amount": 28.67
+      },
+      {
+        "trip_id": 862,
+        "driver_name": "Lisa Brown",
+        "total_amount": 12.89
+      },
+      {
+        "trip_id": 871,
+        "driver_name": "Michael Miller",
+        "total_amount": 51.339999999999996
+      },
+      {
+        "trip_id": 883,
+        "driver_name": "Michael Miller",
+        "total_amount": 5.72
+      },
+      {
+        "trip_id": 887,
+        "driver_name": "Emily Jones",
+        "total_amount": 27.05
+      },
+      {
+        "trip_id": 895,
+        "driver_name": "Jessica Miller",
+        "total_amount": 34.1
+      },
+      {
+        "trip_id": 903,
+        "driver_name": "Sarah Martinez",
+        "total_amount": 12.52
+      },
+      {
+        "trip_id": 927,
+        "driver_name": "David Davis",
+        "total_amount": 35.019999999999996
+      },
+      {
+        "trip_id": 939,
+        "driver_name": "Lisa Brown",
+        "total_amount": 8.56
+      },
+      {
+        "trip_id": 947,
+        "driver_name": "Amanda Rodriguez",
+        "total_amount": 24.86
+      },
+      {
+        "trip_id": 951,
+        "driver_name": "David Smith",
+        "total_amount": 43.07
+      },
+      {
+        "trip_id": 963,
+        "driver_name": "James Martinez",
+        "total_amount": 51.22
+      },
+      {
+        "trip_id": 964,
+        "driver_name": "Sarah Brown",
+        "total_amount": 41.59
+      },
+      {
+        "trip_id": 970,
+        "driver_name": "Jessica Miller",
+        "total_amount": 42.88
+      },
+      {
+        "trip_id": 985,
+        "driver_name": "Sarah Brown",
+        "total_amount": 41.68
+      },
+      {
+        "trip_id": 997,
+        "driver_name": "Lisa Smith",
+        "total_amount": 34.32
+      }
+    ]
+  },
+  {
+    "question": "Show all active drivers in New York",
+    "sql": "SELECT d.first_name, d.last_name, d.email, d.rating FROM drivers d JOIN cities c ON d.city_id = c.city_id WHERE d.status = 'active' AND c.city_name = 'New York'",
+    "category": "filtering_with_join",
+    "expected_result": [
+      {
+        "first_name": "Lisa",
+        "last_name": "Garcia",
+        "email": "driver47@example.com",
+        "rating": 4.62
+      }
+    ]
+  },
+  {
+    "question": "What are the completed trips for Tesla vehicles?",
+    "sql": "SELECT t.trip_id, t.total_amount, t.pickup_time FROM trips t JOIN vehicles v ON t.vehicle_id = v.vehicle_id WHERE v.make = 'Tesla' AND t.trip_status = 'completed'",
+    "category": "filtering_with_join",
+    "expected_result": [
+      {
+        "trip_id": 70,
+        "total_amount": 6.069999999999999,
+        "pickup_time": "2025-12-27T23:52:26.910077"
+      },
+      {
+        "trip_id": 101,
+        "total_amount": 36.39,
+        "pickup_time": "2025-12-13T21:13:26.910077"
+      },
+      {
+        "trip_id": 123,
+        "total_amount": 24.51,
+        "pickup_time": "2025-12-26T21:51:26.910077"
+      },
+      {
+        "trip_id": 129,
+        "total_amount": 36.68,
+        "pickup_time": "2025-12-12T02:40:26.910077"
+      },
+      {
+        "trip_id": 130,
+        "total_amount": 10.54,
+        "pickup_time": "2025-12-27T20:59:26.910077"
+      },
+      {
+        "trip_id": 205,
+        "total_amount": 46.02,
+        "pickup_time": "2026-01-04T16:29:26.910077"
+      },
+      {
+        "trip_id": 238,
+        "total_amount": 48.28,
+        "pickup_time": "2025-12-21T23:13:26.910077"
+      },
+      {
+        "trip_id": 241,
+        "total_amount": 38.85,
+        "pickup_time": "2025-12-30T08:24:26.910077"
+      },
+      {
+        "trip_id": 242,
+        "total_amount": 10.69,
+        "pickup_time": "2025-12-25T05:39:26.910077"
+      },
+      {
+        "trip_id": 335,
+        "total_amount": 22.97,
+        "pickup_time": "2025-12-25T14:12:26.910077"
+      },
+      {
+        "trip_id": 350,
+        "total_amount": 32.12,
+        "pickup_time": "2026-01-05T21:25:26.910077"
+      },
+      {
+        "trip_id": 352,
+        "total_amount": 39.58,
+        "pickup_time": "2025-12-12T21:14:26.910077"
+      },
+      {
+        "trip_id": 416,
+        "total_amount": 29.560000000000002,
+        "pickup_time": "2025-12-08T16:48:26.910077"
+      },
+      {
+        "trip_id": 434,
+        "total_amount": 33.07,
+        "pickup_time": "2025-12-09T15:31:26.910077"
+      },
+      {
+        "trip_id": 445,
+        "total_amount": 43.97,
+        "pickup_time": "2025-12-15T08:25:26.910077"
+      },
+      {
+        "trip_id": 456,
+        "total_amount": 15.120000000000001,
+        "pickup_time": "2025-12-22T18:58:26.910077"
+      },
+      {
+        "trip_id": 464,
+        "total_amount": 52.72,
+        "pickup_time": "2026-01-07T10:03:26.910077"
+      },
+      {
+        "trip_id": 494,
+        "total_amount": 39.85,
+        "pickup_time": "2026-01-06T06:38:26.910077"
+      },
+      {
+        "trip_id": 529,
+        "total_amount": 34.71,
+        "pickup_time": "2025-12-23T19:50:26.910077"
+      },
+      {
+        "trip_id": 594,
+        "total_amount": 9.3,
+        "pickup_time": "2025-12-09T11:39:26.910077"
+      },
+      {
+        "trip_id": 597,
+        "total_amount": 20.76,
+        "pickup_time": "2025-12-11T08:18:26.910077"
+      },
+      {
+        "trip_id": 678,
+        "total_amount": 30.44,
+        "pickup_time": "2025-12-11T23:15:26.910077"
+      },
+      {
+        "trip_id": 679,
+        "total_amount": 35.25,
+        "pickup_time": "2025-12-26T08:31:26.910077"
+      },
+      {
+        "trip_id": 719,
+        "total_amount": 7.94,
+        "pickup_time": "2025-12-31T07:32:26.910077"
+      },
+      {
+        "trip_id": 723,
+        "total_amount": 7.5,
+        "pickup_time": "2025-12-23T05:42:26.910077"
+      },
+      {
+        "trip_id": 748,
+        "total_amount": 39.71,
+        "pickup_time": "2025-12-16T01:00:26.910077"
+      },
+      {
+        "trip_id": 771,
+        "total_amount": 11.620000000000001,
+        "pickup_time": "2025-12-21T18:59:26.910077"
+      },
+      {
+        "trip_id": 778,
+        "total_amount": 35.36,
+        "pickup_time": "2025-12-10T05:03:26.910077"
+      },
+      {
+        "trip_id": 808,
+        "total_amount": 39.330000000000005,
+        "pickup_time": "2026-01-03T10:53:26.910077"
+      },
+      {
+        "trip_id": 830,
+        "total_amount": 34.25,
+        "pickup_time": "2025-12-15T12:38:26.910077"
+      },
+      {
+        "trip_id": 860,
+        "total_amount": 43.64,
+        "pickup_time": "2025-12-18T22:19:26.910077"
+      },
+      {
+        "trip_id": 887,
+        "total_amount": 27.05,
+        "pickup_time": "2025-12-17T13:23:26.910077"
+      },
+      {
+        "trip_id": 962,
+        "total_amount": 40.79,
+        "pickup_time": "2025-12-23T23:30:26.910077"
+      },
+      {
+        "trip_id": 975,
+        "total_amount": 33.92,
+        "pickup_time": "2025-12-09T10:17:26.910077"
+      },
+      {
+        "trip_id": 979,
+        "total_amount": 19.72,
+        "pickup_time": "2025-12-09T13:13:26.910077"
+      }
+    ]
+  },
+  {
+    "question": "What are the 10 most expensive trips?",
+    "sql": "SELECT trip_id, driver_id, customer_id, total_amount FROM trips ORDER BY total_amount DESC LIMIT 10",
+    "category": "simple_sorting",
+    "expected_result": [
+      {
+        "trip_id": 853,
+        "driver_id": 22,
+        "customer_id": 182,
+        "total_amount": 59.08
+      },
+      {
+        "trip_id": 788,
+        "driver_id": 21,
+        "customer_id": 171,
+        "total_amount": 58.540000000000006
+      },
+      {
+        "trip_id": 810,
+        "driver_id": 15,
+        "customer_id": 191,
+        "total_amount": 58.309999999999995
+      },
+      {
+        "trip_id": 135,
+        "driver_id": 29,
+        "customer_id": 88,
+        "total_amount": 58.27
+      },
+      {
+        "trip_id": 760,
+        "driver_id": 29,
+        "customer_id": 138,
+        "total_amount": 57.949999999999996
+      },
+      {
+        "trip_id": 782,
+        "driver_id": 23,
+        "customer_id": 172,
+        "total_amount": 56.97
+      },
+      {
+        "trip_id": 336,
+        "driver_id": 21,
+        "customer_id": 149,
+        "total_amount": 56.76
+      },
+      {
+        "trip_id": 62,
+        "driver_id": 37,
+        "customer_id": 47,
+        "total_amount": 56.5
+      },
+      {
+        "trip_id": 197,
+        "driver_id": 23,
+        "customer_id": 62,
+        "total_amount": 56.379999999999995
+      },
+      {
+        "trip_id": 544,
+        "driver_id": 37,
+        "customer_id": 13,
+        "total_amount": 55.55
+      }
+    ]
+  },
+  {
+    "question": "Show the top 5 highest rated drivers",
+    "sql": "SELECT first_name || ' ' || last_name as driver_name, rating, total_trips FROM drivers WHERE rating IS NOT NULL ORDER BY rating DESC LIMIT 5",
+    "category": "simple_sorting",
+    "expected_result": [
+      {
+        "driver_name": "Amanda Rodriguez",
+        "rating": 4.99,
+        "total_trips": 316
+      },
+      {
+        "driver_name": "Emily Smith",
+        "rating": 4.92,
+        "total_trips": 328
+      },
+      {
+        "driver_name": "Robert Rodriguez",
+        "rating": 4.91,
+        "total_trips": 104
+      },
+      {
+        "driver_name": "David Smith",
+        "rating": 4.89,
+        "total_trips": 405
+      },
+      {
+        "driver_name": "James Martinez",
+        "rating": 4.84,
+        "total_trips": 441
+      }
+    ]
+  },
+  {
+    "question": "What are the longest trips by duration?",
+    "sql": "SELECT trip_id, distance_miles, duration_minutes, total_amount FROM trips WHERE duration_minutes IS NOT NULL ORDER BY duration_minutes DESC LIMIT 5",
+    "category": "simple_sorting",
+    "expected_result": [
+      {
+        "trip_id": 267,
+        "distance_miles": 23.48,
+        "duration_minutes": 60,
+        "total_amount": 13.32
+      },
+      {
+        "trip_id": 287,
+        "distance_miles": 13.49,
+        "duration_minutes": 60,
+        "total_amount": 19.16
+      },
+      {
+        "trip_id": 291,
+        "distance_miles": 5.2,
+        "duration_minutes": 60,
+        "total_amount": 9.68
+      },
+      {
+        "trip_id": 338,
+        "distance_miles": 17.03,
+        "duration_minutes": 60,
+        "total_amount": 6.890000000000001
+      },
+      {
+        "trip_id": 374,
+        "distance_miles": 20.46,
+        "duration_minutes": 60,
+        "total_amount": 24.76
+      }
+    ]
+  },
+  {
+    "question": "Which drivers have completed more than 20 trips?",
+    "sql": "SELECT d.first_name || ' ' || d.last_name as driver_name, COUNT(t.trip_id) as trip_count FROM drivers d JOIN trips t ON d.driver_id = t.driver_id WHERE t.trip_status = 'completed' GROUP BY d.driver_id, d.first_name, d.last_name HAVING COUNT(t.trip_id) > 20 ORDER BY trip_count DESC",
+    "category": "group_by_having",
+    "expected_result": []
+  },
+  {
+    "question": "What cities have more than 100 trips?",
+    "sql": "SELECT c.city_name, COUNT(t.trip_id) as trip_count FROM cities c JOIN trips t ON c.city_id = t.pickup_city_id GROUP BY c.city_id, c.city_name HAVING COUNT(t.trip_id) > 100 ORDER BY trip_count DESC",
+    "category": "group_by_having",
+    "expected_result": [
+      {
+        "city_name": "Chicago",
+        "trip_count": 115
+      },
+      {
+        "city_name": "Seattle",
+        "trip_count": 110
+      },
+      {
+        "city_name": "Portland",
+        "trip_count": 110
+      }
+    ]
+  },
+  {
+    "question": "How many trips are in each status?",
+    "sql": "SELECT trip_status, COUNT(*) as count FROM trips GROUP BY trip_status ORDER BY count DESC",
+    "category": "simple_aggregation",
+    "expected_result": [
+      {
+        "trip_status": "cancelled",
+        "count": 273
+      },
+      {
+        "trip_status": "in_progress",
+        "count": 258
+      },
+      {
+        "trip_status": "completed",
+        "count": 250
+      },
+      {
+        "trip_status": "scheduled",
+        "count": 219
+      }
+    ]
+  },
+  {
+    "question": "What is the average trip amount for each trip status?",
+    "sql": "SELECT trip_status, AVG(total_amount) as avg_amount, COUNT(*) as count FROM trips GROUP BY trip_status ORDER BY avg_amount DESC",
+    "category": "simple_aggregation",
+    "expected_result": [
+      {
+        "trip_status": "in_progress",
+        "avg_amount": 30.77860465116279,
+        "count": 258
+      },
+      {
+        "trip_status": "scheduled",
+        "avg_amount": 29.649954337899544,
+        "count": 219
+      },
+      {
+        "trip_status": "completed",
+        "avg_amount": 29.02272,
+        "count": 250
+      },
+      {
+        "trip_status": "cancelled",
+        "avg_amount": 28.988644688644687,
+        "count": 273
+      }
+    ]
+  },
+  {
+    "question": "What is the total revenue by payment method?",
+    "sql": "SELECT payment_method, SUM(total_amount) as total_revenue, COUNT(*) as trip_count FROM trips WHERE payment_method IS NOT NULL GROUP BY payment_method ORDER BY total_revenue DESC",
+    "category": "simple_aggregation",
+    "expected_result": [
+      {
+        "payment_method": "apple_pay",
+        "total_revenue": 6753.09,
+        "trip_count": 227
+      },
+      {
+        "payment_method": "google_pay",
+        "total_revenue": 5905.64,
+        "trip_count": 199
+      },
+      {
+        "payment_method": "credit_card",
+        "total_revenue": 5817.49,
+        "trip_count": 205
+      },
+      {
+        "payment_method": "debit_card",
+        "total_revenue": 5691.7,
+        "trip_count": 188
+      },
+      {
+        "payment_method": "paypal",
+        "total_revenue": 5435.88,
+        "trip_count": 181
+      }
+    ]
+  },
+  {
+    "question": "How many trips used promotions?",
+    "sql": "SELECT COUNT(DISTINCT trip_id) as trips_with_promotions FROM trip_promotions",
+    "category": "simple_aggregation",
+    "expected_result": [
+      {
+        "trips_with_promotions": 185
+      }
+    ]
+  },
+  {
+    "question": "What is the total discount applied from promotions?",
+    "sql": "SELECT SUM(discount_applied) as total_discount FROM trip_promotions",
+    "category": "simple_aggregation",
+    "expected_result": [
+      {
+        "total_discount": 1198.89
+      }
+    ]
+  },
+  {
+    "question": "What is the average lifetime value of customers?",
+    "sql": "SELECT AVG(lifetime_value) as avg_lifetime_value FROM customers",
+    "category": "simple_aggregation",
+    "expected_result": [
+      {
+        "avg_lifetime_value": 978.49405
+      }
+    ]
+  },
+  {
+    "question": "How many customers signed up in each month?",
+    "sql": "SELECT strftime('%Y-%m', signup_date) as signup_month, COUNT(*) as customer_count FROM customers WHERE signup_date IS NOT NULL GROUP BY signup_month ORDER BY signup_month DESC",
+    "category": "date_filtering",
+    "expected_result": [
+      {
+        "signup_month": "2025-12",
+        "customer_count": 12
+      },
+      {
+        "signup_month": "2025-11",
+        "customer_count": 8
+      },
+      {
+        "signup_month": "2025-10",
+        "customer_count": 15
+      },
+      {
+        "signup_month": "2025-09",
+        "customer_count": 9
+      },
+      {
+        "signup_month": "2025-08",
+        "customer_count": 8
+      },
+      {
+        "signup_month": "2025-07",
+        "customer_count": 9
+      },
+      {
+        "signup_month": "2025-06",
+        "customer_count": 7
+      },
+      {
+        "signup_month": "2025-05",
+        "customer_count": 10
+      },
+      {
+        "signup_month": "2025-04",
+        "customer_count": 5
+      },
+      {
+        "signup_month": "2025-03",
+        "customer_count": 8
+      },
+      {
+        "signup_month": "2025-02",
+        "customer_count": 6
+      },
+      {
+        "signup_month": "2025-01",
+        "customer_count": 4
+      },
+      {
+        "signup_month": "2024-12",
+        "customer_count": 7
+      },
+      {
+        "signup_month": "2024-11",
+        "customer_count": 6
+      },
+      {
+        "signup_month": "2024-10",
+        "customer_count": 9
+      },
+      {
+        "signup_month": "2024-09",
+        "customer_count": 10
+      },
+      {
+        "signup_month": "2024-08",
+        "customer_count": 10
+      },
+      {
+        "signup_month": "2024-07",
+        "customer_count": 12
+      },
+      {
+        "signup_month": "2024-06",
+        "customer_count": 7
+      },
+      {
+        "signup_month": "2024-05",
+        "customer_count": 5
+      },
+      {
+        "signup_month": "2024-04",
+        "customer_count": 14
+      },
+      {
+        "signup_month": "2024-03",
+        "customer_count": 4
+      },
+      {
+        "signup_month": "2024-02",
+        "customer_count": 7
+      },
+      {
+        "signup_month": "2024-01",
+        "customer_count": 8
+      }
+    ]
+  },
+  {
+    "question": "What is the average trip count per driver?",
+    "sql": "SELECT AVG(total_trips) as avg_trips FROM drivers",
+    "category": "simple_aggregation",
+    "expected_result": [
+      {
+        "avg_trips": 259.84
+      }
+    ]
+  },
+  {
+    "question": "Show drivers with their total completed trips and average rating",
+    "sql": "SELECT d.first_name || ' ' || d.last_name as driver_name, COUNT(t.trip_id) as completed_trips, AVG(t.rating) as avg_rating FROM drivers d LEFT JOIN trips t ON d.driver_id = t.driver_id AND t.trip_status = 'completed' AND t.rating IS NOT NULL GROUP BY d.driver_id, d.first_name, d.last_name HAVING COUNT(t.trip_id) > 0 ORDER BY completed_trips DESC LIMIT 10",
+    "category": "aggregation_with_joins",
+    "expected_result": [
+      {
+        "driver_name": "James Williams",
+        "completed_trips": 9,
+        "avg_rating": 3.4444444444444446
+      },
+      {
+        "driver_name": "Robert Rodriguez",
+        "completed_trips": 8,
+        "avg_rating": 3.75
+      },
+      {
+        "driver_name": "James Miller",
+        "completed_trips": 7,
+        "avg_rating": 3.2857142857142856
+      },
+      {
+        "driver_name": "Michael Brown",
+        "completed_trips": 7,
+        "avg_rating": 2.7142857142857144
+      },
+      {
+        "driver_name": "John Martinez",
+        "completed_trips": 7,
+        "avg_rating": 2.142857142857143
+      },
+      {
+        "driver_name": "Emily Garcia",
+        "completed_trips": 6,
+        "avg_rating": 2.6666666666666665
+      },
+      {
+        "driver_name": "Emily Williams",
+        "completed_trips": 6,
+        "avg_rating": 2.1666666666666665
+      },
+      {
+        "driver_name": "James Williams",
+        "completed_trips": 6,
+        "avg_rating": 3.5
+      },
+      {
+        "driver_name": "James Martinez",
+        "completed_trips": 6,
+        "avg_rating": 2.0
+      },
+      {
+        "driver_name": "Jessica Miller",
+        "completed_trips": 6,
+        "avg_rating": 3.8333333333333335
+      }
+    ]
+  }
+]

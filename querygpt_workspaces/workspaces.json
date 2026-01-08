@@ -1,0 +1,1490 @@
+{
+  "mobility": {
+    "name": "Mobility",
+    "description": "Queries that include trips, driver, vehicle, and city details",
+    "tables": [
+      "trips",
+      "drivers",
+      "vehicles",
+      "cities",
+      "customers"
+    ],
+    "keywords": [
+      "trip",
+      "driver",
+      "vehicle",
+      "ride",
+      "pickup",
+      "dropoff",
+      "city",
+      "miles",
+      "duration",
+      "fare",
+      "rating"
+    ],
+    "sql_samples": [
+      {
+        "question": "How many trips were completed yesterday?",
+        "sql": "SELECT COUNT(*) as trip_count FROM trips WHERE trip_status = 'completed' AND date(pickup_time) = date('now', '-1 day')",
+        "description": "Count completed trips from yesterday"
+      },
+      {
+        "question": "What are the top 5 cities by number of trips?",
+        "sql": "SELECT c.city_name, COUNT(t.trip_id) as trip_count FROM cities c JOIN trips t ON c.city_id = t.pickup_city_id GROUP BY c.city_id, c.city_name ORDER BY trip_count DESC LIMIT 5",
+        "description": "Aggregate trips by city with join"
+      },
+      {
+        "question": "Show all active drivers with their ratings",
+        "sql": "SELECT first_name || ' ' || last_name as driver_name, rating, total_trips FROM drivers WHERE status = 'active' ORDER BY rating DESC",
+        "description": "Filter active drivers and sort by rating"
+      },
+      {
+        "question": "What is the total revenue from trips in Seattle?",
+        "sql": "SELECT SUM(t.total_amount) as total_revenue FROM trips t JOIN cities c ON t.pickup_city_id = c.city_id WHERE c.city_name = 'Seattle' AND t.trip_status = 'completed'",
+        "description": "Sum revenue with city filter and join"
+      },
+      {
+        "question": "Which driver has completed the most trips?",
+        "sql": "SELECT d.first_name || ' ' || d.last_name as driver_name, COUNT(t.trip_id) as trip_count FROM drivers d JOIN trips t ON d.driver_id = t.driver_id WHERE t.trip_status = 'completed' GROUP BY d.driver_id, d.first_name, d.last_name ORDER BY trip_count DESC LIMIT 1",
+        "description": "Find driver with most completed trips using aggregation"
+      },
+      {
+        "question": "What are the completed trips for Tesla vehicles?",
+        "sql": "SELECT t.trip_id, t.total_amount, t.pickup_time FROM trips t JOIN vehicles v ON t.vehicle_id = v.vehicle_id WHERE v.make = 'Tesla' AND t.trip_status = 'completed'",
+        "description": "Filter trips by vehicle make with join"
+      },
+      {
+        "question": "How many trips does each driver have?",
+        "sql": "SELECT d.first_name || ' ' || d.last_name as driver_name, COUNT(t.trip_id) as trip_count FROM drivers d LEFT JOIN trips t ON d.driver_id = t.driver_id GROUP BY d.driver_id, d.first_name, d.last_name ORDER BY trip_count DESC",
+        "description": "Count trips per driver with left join"
+      },
+      {
+        "question": "What is the average trip amount by city?",
+        "sql": "SELECT c.city_name, AVG(t.total_amount) as avg_amount FROM cities c JOIN trips t ON c.city_id = t.pickup_city_id WHERE t.trip_status = 'completed' GROUP BY c.city_id, c.city_name ORDER BY avg_amount DESC",
+        "description": "Calculate average with group by"
+      }
+    ],
+    "table_schemas": {
+      "trips": {
+        "table_name": "trips",
+        "columns": [
+          {
+            "name": "trip_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "driver_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "customer_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "vehicle_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "pickup_city_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "dropoff_city_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "trip_status",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "trip_type",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "distance_miles",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "duration_minutes",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "fare_amount",
+            "type": "REAL",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "tip_amount",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": "0.0",
+            "primary_key": false
+          },
+          {
+            "name": "total_amount",
+            "type": "REAL",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "pickup_time",
+            "type": "TIMESTAMP",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "dropoff_time",
+            "type": "TIMESTAMP",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "payment_method",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "rating",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "dropoff_city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          },
+          {
+            "column": "pickup_city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          },
+          {
+            "column": "vehicle_id",
+            "references_table": "vehicles",
+            "references_column": "vehicle_id"
+          },
+          {
+            "column": "customer_id",
+            "references_table": "customers",
+            "references_column": "customer_id"
+          },
+          {
+            "column": "driver_id",
+            "references_table": "drivers",
+            "references_column": "driver_id"
+          }
+        ]
+      },
+      "drivers": {
+        "table_name": "drivers",
+        "columns": [
+          {
+            "name": "driver_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "first_name",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "last_name",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "email",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "phone",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "city_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "status",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "rating",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "total_trips",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": "0",
+            "primary_key": false
+          },
+          {
+            "name": "joined_date",
+            "type": "DATE",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "vehicle_type",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          }
+        ]
+      },
+      "vehicles": {
+        "table_name": "vehicles",
+        "columns": [
+          {
+            "name": "vehicle_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "driver_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "make",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "model",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "year",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "color",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "license_plate",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "vehicle_type",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "status",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "driver_id",
+            "references_table": "drivers",
+            "references_column": "driver_id"
+          }
+        ]
+      },
+      "cities": {
+        "table_name": "cities",
+        "columns": [
+          {
+            "name": "city_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "city_name",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "state",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "country",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "timezone",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "population",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "not_null": false,
+            "default_value": "CURRENT_TIMESTAMP",
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": []
+      },
+      "customers": {
+        "table_name": "customers",
+        "columns": [
+          {
+            "name": "customer_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "first_name",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "last_name",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "email",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "phone",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "city_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "signup_date",
+            "type": "DATE",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "total_rides",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": "0",
+            "primary_key": false
+          },
+          {
+            "name": "lifetime_value",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": "0.0",
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          }
+        ]
+      }
+    }
+  },
+  "customer_analytics": {
+    "name": "Customer Analytics",
+    "description": "Queries about customers, their behavior, and lifetime value",
+    "tables": [
+      "customers",
+      "trips",
+      "cities"
+    ],
+    "keywords": [
+      "customer",
+      "spending",
+      "lifetime",
+      "value",
+      "signup",
+      "revenue",
+      "total"
+    ],
+    "sql_samples": [
+      {
+        "question": "What are the top 5 customers by total spending?",
+        "sql": "SELECT c.first_name || ' ' || c.last_name as customer_name, SUM(t.total_amount) as total_spent FROM customers c JOIN trips t ON c.customer_id = t.customer_id WHERE t.trip_status = 'completed' GROUP BY c.customer_id, c.first_name, c.last_name ORDER BY total_spent DESC LIMIT 5",
+        "description": "Top customers by spending"
+      },
+      {
+        "question": "How many customers signed up in each month?",
+        "sql": "SELECT strftime('%Y-%m', signup_date) as signup_month, COUNT(*) as customer_count FROM customers WHERE signup_date IS NOT NULL GROUP BY signup_month ORDER BY signup_month DESC",
+        "description": "Customer signups by month"
+      },
+      {
+        "question": "What is the average lifetime value of customers?",
+        "sql": "SELECT AVG(lifetime_value) as avg_lifetime_value FROM customers",
+        "description": "Average customer lifetime value"
+      },
+      {
+        "question": "Which city has the most customers?",
+        "sql": "SELECT c.city_name, COUNT(cust.customer_id) as customer_count FROM cities c JOIN customers cust ON c.city_id = cust.city_id GROUP BY c.city_id, c.city_name ORDER BY customer_count DESC LIMIT 1",
+        "description": "City with most customers"
+      }
+    ],
+    "table_schemas": {
+      "customers": {
+        "table_name": "customers",
+        "columns": [
+          {
+            "name": "customer_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "first_name",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "last_name",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "email",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "phone",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "city_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "signup_date",
+            "type": "DATE",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "total_rides",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": "0",
+            "primary_key": false
+          },
+          {
+            "name": "lifetime_value",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": "0.0",
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          }
+        ]
+      },
+      "trips": {
+        "table_name": "trips",
+        "columns": [
+          {
+            "name": "trip_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "driver_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "customer_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "vehicle_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "pickup_city_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "dropoff_city_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "trip_status",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "trip_type",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "distance_miles",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "duration_minutes",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "fare_amount",
+            "type": "REAL",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "tip_amount",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": "0.0",
+            "primary_key": false
+          },
+          {
+            "name": "total_amount",
+            "type": "REAL",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "pickup_time",
+            "type": "TIMESTAMP",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "dropoff_time",
+            "type": "TIMESTAMP",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "payment_method",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "rating",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "dropoff_city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          },
+          {
+            "column": "pickup_city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          },
+          {
+            "column": "vehicle_id",
+            "references_table": "vehicles",
+            "references_column": "vehicle_id"
+          },
+          {
+            "column": "customer_id",
+            "references_table": "customers",
+            "references_column": "customer_id"
+          },
+          {
+            "column": "driver_id",
+            "references_table": "drivers",
+            "references_column": "driver_id"
+          }
+        ]
+      },
+      "cities": {
+        "table_name": "cities",
+        "columns": [
+          {
+            "name": "city_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "city_name",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "state",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "country",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "timezone",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "population",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "not_null": false,
+            "default_value": "CURRENT_TIMESTAMP",
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": []
+      }
+    }
+  },
+  "vehicle_operations": {
+    "name": "Vehicle Operations",
+    "description": "Queries about vehicles, their usage, and maintenance",
+    "tables": [
+      "vehicles",
+      "trips",
+      "drivers"
+    ],
+    "keywords": [
+      "vehicle",
+      "car",
+      "make",
+      "model",
+      "type",
+      "license",
+      "plate"
+    ],
+    "sql_samples": [
+      {
+        "question": "Which vehicle make and model has the most trips?",
+        "sql": "SELECT v.make, v.model, COUNT(t.trip_id) as trip_count FROM vehicles v JOIN trips t ON v.vehicle_id = t.vehicle_id GROUP BY v.make, v.model ORDER BY trip_count DESC LIMIT 1",
+        "description": "Most used vehicle model"
+      },
+      {
+        "question": "What is the total revenue generated by each vehicle type?",
+        "sql": "SELECT v.vehicle_type, SUM(t.total_amount) as total_revenue FROM vehicles v JOIN trips t ON v.vehicle_id = t.vehicle_id WHERE t.trip_status = 'completed' GROUP BY v.vehicle_type ORDER BY total_revenue DESC",
+        "description": "Revenue by vehicle type"
+      },
+      {
+        "question": "List all vehicles with their driver names",
+        "sql": "SELECT v.make || ' ' || v.model as vehicle, d.first_name || ' ' || d.last_name as driver_name, v.license_plate FROM vehicles v JOIN drivers d ON v.driver_id = d.driver_id",
+        "description": "Vehicles with driver information"
+      }
+    ],
+    "table_schemas": {
+      "vehicles": {
+        "table_name": "vehicles",
+        "columns": [
+          {
+            "name": "vehicle_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "driver_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "make",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "model",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "year",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "color",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "license_plate",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "vehicle_type",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "status",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "driver_id",
+            "references_table": "drivers",
+            "references_column": "driver_id"
+          }
+        ]
+      },
+      "trips": {
+        "table_name": "trips",
+        "columns": [
+          {
+            "name": "trip_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "driver_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "customer_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "vehicle_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "pickup_city_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "dropoff_city_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "trip_status",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "trip_type",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "distance_miles",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "duration_minutes",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "fare_amount",
+            "type": "REAL",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "tip_amount",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": "0.0",
+            "primary_key": false
+          },
+          {
+            "name": "total_amount",
+            "type": "REAL",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "pickup_time",
+            "type": "TIMESTAMP",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "dropoff_time",
+            "type": "TIMESTAMP",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "payment_method",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "rating",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "dropoff_city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          },
+          {
+            "column": "pickup_city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          },
+          {
+            "column": "vehicle_id",
+            "references_table": "vehicles",
+            "references_column": "vehicle_id"
+          },
+          {
+            "column": "customer_id",
+            "references_table": "customers",
+            "references_column": "customer_id"
+          },
+          {
+            "column": "driver_id",
+            "references_table": "drivers",
+            "references_column": "driver_id"
+          }
+        ]
+      },
+      "drivers": {
+        "table_name": "drivers",
+        "columns": [
+          {
+            "name": "driver_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "first_name",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "last_name",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "email",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "phone",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "city_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "status",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "rating",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "total_trips",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": "0",
+            "primary_key": false
+          },
+          {
+            "name": "joined_date",
+            "type": "DATE",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "vehicle_type",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          }
+        ]
+      }
+    }
+  },
+  "promotions": {
+    "name": "Promotions",
+    "description": "Queries about promotions, discounts, and marketing campaigns",
+    "tables": [
+      "promotions",
+      "trip_promotions",
+      "trips"
+    ],
+    "keywords": [
+      "promotion",
+      "discount",
+      "code",
+      "campaign",
+      "marketing"
+    ],
+    "sql_samples": [
+      {
+        "question": "How many trips used promotions?",
+        "sql": "SELECT COUNT(DISTINCT trip_id) as trips_with_promotions FROM trip_promotions",
+        "description": "Count trips with promotions"
+      },
+      {
+        "question": "What is the total discount applied from promotions?",
+        "sql": "SELECT SUM(discount_applied) as total_discount FROM trip_promotions",
+        "description": "Total discount amount"
+      },
+      {
+        "question": "Which promotion code has been used the most?",
+        "sql": "SELECT p.promotion_code, COUNT(tp.trip_id) as usage_count FROM promotions p JOIN trip_promotions tp ON p.promotion_id = tp.promotion_id GROUP BY p.promotion_id, p.promotion_code ORDER BY usage_count DESC LIMIT 1",
+        "description": "Most used promotion code"
+      }
+    ],
+    "table_schemas": {
+      "promotions": {
+        "table_name": "promotions",
+        "columns": [
+          {
+            "name": "promotion_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "promotion_code",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "description",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "discount_type",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "discount_value",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "start_date",
+            "type": "DATE",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "end_date",
+            "type": "DATE",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "max_uses",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "current_uses",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": "0",
+            "primary_key": false
+          },
+          {
+            "name": "is_active",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": "1",
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": []
+      },
+      "trip_promotions": {
+        "table_name": "trip_promotions",
+        "columns": [
+          {
+            "name": "trip_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "promotion_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "discount_applied",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "promotion_id",
+            "references_table": "promotions",
+            "references_column": "promotion_id"
+          },
+          {
+            "column": "trip_id",
+            "references_table": "trips",
+            "references_column": "trip_id"
+          }
+        ]
+      },
+      "trips": {
+        "table_name": "trips",
+        "columns": [
+          {
+            "name": "trip_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": true
+          },
+          {
+            "name": "driver_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "customer_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "vehicle_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "pickup_city_id",
+            "type": "INTEGER",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "dropoff_city_id",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "trip_status",
+            "type": "TEXT",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "trip_type",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "distance_miles",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "duration_minutes",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "fare_amount",
+            "type": "REAL",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "tip_amount",
+            "type": "REAL",
+            "not_null": false,
+            "default_value": "0.0",
+            "primary_key": false
+          },
+          {
+            "name": "total_amount",
+            "type": "REAL",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "pickup_time",
+            "type": "TIMESTAMP",
+            "not_null": true,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "dropoff_time",
+            "type": "TIMESTAMP",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "payment_method",
+            "type": "TEXT",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          },
+          {
+            "name": "rating",
+            "type": "INTEGER",
+            "not_null": false,
+            "default_value": null,
+            "primary_key": false
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "dropoff_city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          },
+          {
+            "column": "pickup_city_id",
+            "references_table": "cities",
+            "references_column": "city_id"
+          },
+          {
+            "column": "vehicle_id",
+            "references_table": "vehicles",
+            "references_column": "vehicle_id"
+          },
+          {
+            "column": "customer_id",
+            "references_table": "customers",
+            "references_column": "customer_id"
+          },
+          {
+            "column": "driver_id",
+            "references_table": "drivers",
+            "references_column": "driver_id"
+          }
+        ]
+      }
+    }
+  }
+}

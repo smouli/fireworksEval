@@ -1,0 +1,63 @@
+================================================================================
+Golden Dataset Generator for Fine-Tuning
+================================================================================
+
+1. Loading existing evaluation data for reference...
+   Found 34 existing examples (will keep separate)
+
+2. Loading database...
+   ✓ Database loaded
+
+3. Generating golden dataset for fine-tuning...
+Starting with 0 examples
+
+Generating variations from existing queries...
+✓ Generated 78 variations
+
+Generating failure pattern queries...
+✓ Generated 33 failure pattern queries
+
+Generating schema-based queries...
+✓ Generated 121 schema-based queries
+
+Generating additional paraphrases (current: 232, target: 1000)...
+✓ Generated 0 paraphrases
+
+Generating additional simple queries (current: 232, target: 1000)...
+✓ Generated 19 additional simple queries
+
+✓ Total unique examples: 251
+
+4. Saving golden dataset...
+   ✓ Saved 251 examples to golden_dataset.json
+
+5. Exporting SFT format...
+✓ Exported 251 examples to golden_dataset_sft.jsonl
+
+================================================================================
+Golden Dataset Statistics
+================================================================================
+Total examples: 251
+
+Category distribution:
+  aggregation_with_joins: 51
+  complex_joins: 13
+  date_filtering: 11
+  filtering_with_join: 65
+  group_by_having: 6
+  simple_aggregation: 38
+  simple_filtering: 49
+  simple_sorting: 18
+
+Source distribution:
+  additional_simple: 19
+  date_variation: 2
+  failure_pattern: 33
+  filter_variation: 49
+  limit_variation: 27
+  schema_based: 121
+
+✓ Golden dataset ready for fine-tuning!
+  - JSON format: golden_dataset.json
+  - SFT format: golden_dataset_sft.jsonl
+  - Can be merged with evaluation_data.json later if needed

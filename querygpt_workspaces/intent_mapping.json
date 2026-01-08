@@ -1,0 +1,99 @@
+{
+  "intent_examples": [
+    {
+      "question": "How many trips were completed by Teslas in Seattle yesterday?",
+      "intent": "mobility",
+      "reasoning": "Question is about trips, vehicles (Tesla), and location (Seattle) - all mobility domain"
+    },
+    {
+      "question": "What are the top customers by spending?",
+      "intent": "customer_analytics",
+      "reasoning": "Question is about customer spending and analytics"
+    },
+    {
+      "question": "Which vehicle type generates the most revenue?",
+      "intent": "vehicle_operations",
+      "reasoning": "Question is about vehicles and their revenue performance"
+    },
+    {
+      "question": "How many trips used the WELCOME10 promotion?",
+      "intent": "promotions",
+      "reasoning": "Question is specifically about promotions"
+    },
+    {
+      "question": "Show me drivers in New York with their ratings",
+      "intent": "mobility",
+      "reasoning": "Question about drivers and locations - mobility domain"
+    }
+  ],
+  "intent_categories": {
+    "mobility": {
+      "description": "Trips, drivers, vehicles, cities, and ride-related queries",
+      "primary_tables": [
+        "trips",
+        "drivers",
+        "vehicles",
+        "cities"
+      ],
+      "keywords": [
+        "trip",
+        "driver",
+        "vehicle",
+        "ride",
+        "pickup",
+        "dropoff",
+        "city",
+        "miles",
+        "duration",
+        "fare",
+        "rating",
+        "completed",
+        "cancelled"
+      ]
+    },
+    "customer_analytics": {
+      "description": "Customer behavior, spending, and analytics",
+      "primary_tables": [
+        "customers",
+        "trips"
+      ],
+      "keywords": [
+        "customer",
+        "spending",
+        "lifetime",
+        "value",
+        "signup",
+        "revenue"
+      ]
+    },
+    "vehicle_operations": {
+      "description": "Vehicle usage, performance, and operations",
+      "primary_tables": [
+        "vehicles",
+        "trips",
+        "drivers"
+      ],
+      "keywords": [
+        "vehicle",
+        "car",
+        "make",
+        "model",
+        "type",
+        "license"
+      ]
+    },
+    "promotions": {
+      "description": "Promotions, discounts, and marketing campaigns",
+      "primary_tables": [
+        "promotions",
+        "trip_promotions"
+      ],
+      "keywords": [
+        "promotion",
+        "discount",
+        "code",
+        "campaign"
+      ]
+    }
+  }
+}

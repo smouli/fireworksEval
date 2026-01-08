@@ -1,0 +1,269 @@
+Using account ID: sanatmouli-clqab3ddm
+
+⚠ Skipping baseline evaluation
+✓ Loaded existing baseline results
+
+⚠ Skipping dataset upload
+✓ Using existing dataset: querygpt-sft-dataset
+
+⚠ No model ID provided. Searching for completed fine-tuning job...
+✓ Found completed job: Test SFT Job
+✓ Using fine-tuned model: accounts/sanatmouli-clqab3ddm/models/test-sft-qwen3-30b-a3b-instruct-2507
+
+⚠ Skipping fine-tuning, using model: accounts/sanatmouli-clqab3ddm/models/test-sft-qwen3-30b-a3b-instruct-2507
+
+⚠ Note: Fine-tuned model will be used for evaluation once it's deployed.
+   If the model isn't available yet, you may need to deploy it manually or wait.
+
+================================================================================
+STEP 6: POST-TUNING EVALUATION
+================================================================================
+
+Loading evaluation data from evaluation_data.json...
+✓ Loaded 34 test cases
+
+Using fine-tuned model for evaluation: accounts/sanatmouli-clqab3ddm/models/test-sft-qwen3-30b-a3b-instruct-2507
+Note: If you get an error, the model may need to be deployed first.
+Check the Fireworks dashboard to deploy the model, or it may auto-deploy.
+
+Initializing QueryGPT with model: accounts/sanatmouli-clqab3ddm/models/test-sft-qwen3-30b-a3b-instruct-2507
+✓ QueryGPT initialized
+
+Loading database...
+✓ Database loaded
+
+Running evaluation...
+
+================================================================================
+Evaluating 34 test cases
+================================================================================
+
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_Crs6LKxwhzkjptRmbmfmWh3j', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query asks about the number of trips per city, which directly relates to trip data, city details, and mobility patterns. This falls under the \'mobility\' workspace as it involves trips and city-level analysis."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_hnbdxquLzBn84vVfOmUxlAKn', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query asks about the total number of trips, which directly relates to trip data. This is a core aspect of the mobility domain, which deals with trips, drivers, vehicles, and city details."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_VpWn6XzKTAgaMMcBU5L4u8mu', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query asks about \'trip amount,\' which is directly related to trips, a core concept in the mobility domain. The average trip amount is a metric typically analyzed in mobility systems to understand trip pricing, revenue, or user spending patterns."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_0rTBOisUzg1XjuPBLSuOhmtw', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query asks about the number of drivers in each city, which involves trip-related data, driver locations, and city details. This falls under the mobility domain, which handles driver, vehicle, and city-related information."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_JI3PiU9OUj3jarB07sOsp6N2', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query involves \'cities\' and \'trip revenue\', which are key elements in the mobility domain. The focus on trip revenue suggests a business metric related to trips, drivers, and vehicles across cities, making \'mobility\' the most appropriate workspace."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ⚠️  Validation errors: ["Invalid relevant_columns: ['total_trip_revenue']"]
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_nA0O47wQv60S1KS7yqeablD2', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The question asks about a driver completing the most trips, which involves trip data, driver performance, and mobility-related metrics. This aligns with the \'mobility\' workspace, which handles queries related to trips, drivers, and vehicle movements."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_EekhVYsALlFbHWkWKxQMuj9N', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query asks about driver ratings, which is related to driver performance and service quality in the context of trips or rides. This falls under the mobility domain, which includes driver-related metrics and trip details."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_cLTtdimOVzpidC43xy7lJCan', function=Function(arguments='{"workspace_id": "vehicle_operations", "confidence": 0.95, "reasoning": "The query asks about revenue generated by vehicle types, which relates to vehicle usage and performance metrics. This falls under vehicle operations as it involves analyzing vehicle-related data, specifically revenue tied to different vehicle types."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_flhuOv1dvsVtLFOnVBEvfElF', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query involves \'trips\' and a time frame (\'last 7 days\'), which are key indicators of mobility-related data. The intent is to count completed trips, which falls under trip tracking and mobility operations."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_UzIZRTULfdEet1M8MseTPdvU', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query involves \'trips\' and \'scheduled for today\', which are key indicators of mobility-related data. This falls under the mobility workspace as it pertains to trip scheduling, which is a core aspect of mobility operations."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_pdanmH6nEkpD86RNFKZioUu8', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query involves trip details, driver name, customer name, and pickup city, which are all key elements in the mobility domain. These elements are typically associated with trip tracking, driver assignments, and location-based data, making \'mobility\' the most appropriate workspace."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_FNFB41OJ91Cz8dRBoaoFHTLX', function=Function(arguments='{"workspace_id": "customer_analytics", "confidence": 0.95, "reasoning": "The query asks for the top 5 customers by total spending, which directly relates to customer behavior and lifetime value analysis. This falls under the domain of Customer Analytics."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_FyDVgk6uw36NCmbKmTvLpFe5', function=Function(arguments='{"workspace_id": "vehicle_operations", "confidence": 0.95, "reasoning": "The query asks about vehicle make and model in relation to the number of trips, which is directly related to vehicle usage and performance. This falls under vehicle operations as it involves analyzing vehicle data and usage patterns."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_s6NiuHoymbXo7rMCZzhybOC5', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query involves trips, city (Seattle), and driver names, which are all key elements in the mobility domain. The intent is to retrieve trip data with associated driver information in a specific city, which aligns with mobility-related queries."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_6IYI0oF60W8eWL2pQiIEJkTW', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query asks for active drivers in a specific city (New York), which relates to mobility operations involving drivers and their locations. This falls under the mobility workspace."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_QkRA7TWECIGnLreUW9c74iGb', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query involves \'completed trips\' and \'Tesla vehicles\', which are related to trip tracking and vehicle usage. This falls under mobility, as it pertains to trips, vehicles, and their operational status."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_dqrazFBi7VQPay5yI3mWb0XY', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query asks about \'trips\' and their \'cost\', which directly relates to mobility data involving trips, pricing, and travel details. The intent is to identify the most expensive trips, which falls under the mobility domain."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_4I9X67pz9vBpSuMo9UtLnxkq', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query asks about \'longest trips by duration,\' which directly relates to trip duration, a key metric in mobility data. This involves analyzing trip records, likely including start and end times, distances, and possibly driver or vehicle information. The focus on trip duration aligns with the mobility domain, which handles trip-related data."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_jnXcPBZ1X1YIL224B9pb1VlJ', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query involves drivers and trips, which are core elements of the mobility domain. The intent is to analyze driver performance based on trip counts, which aligns with mobility-related analytics."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_lFChgczH7NMnUxwMEUkephkG', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query asks about trips and their status, which are key elements in the mobility domain. The focus on trip status aligns with tracking trip progress, such as pending, completed, or canceled, which is a common mobility-related metric."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_BcKo37Kh14WCUDiBy1FVrau2', function=Function(arguments='{"workspace_id": "customer_analytics", "confidence": 0.95, "reasoning": "The query asks about total revenue by payment method, which relates to customer transactions and financial behavior. This falls under customer analytics as it involves analyzing customer payment patterns and revenue generation, which are key aspects of customer behavior and lifetime value."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_9MqhefncIcfj4AvSz1mVvP1i', function=Function(arguments='{"workspace_id": "promotions", "confidence": 0.95, "reasoning": "The question asks about trips that used promotions, which directly relates to promotional activities and their usage. The key term \'promotions\' strongly indicates the promotions workspace."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_xTE692LiKuzeAbyEhQGdu2Zb', function=Function(arguments='{"workspace_id": "promotions", "confidence": 0.95, "reasoning": "The query asks about \'total discount applied from promotions,\' which directly relates to promotions, discounts, and marketing campaigns. The keywords \'discount\' and \'promotions\' strongly indicate the promotions workspace."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_6q8GRkHJJCZZUgAxKcHZn7mv', function=Function(arguments='{"workspace_id": "customer_analytics", "confidence": 0.95, "reasoning": "The query asks about the \'average lifetime value of customers,\' which directly relates to customer behavior and financial contribution over time. This is a core concept in customer analytics, making \'customer_analytics\' the most appropriate workspace."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_8dR9vqqpqgSvW7eQF7pI4EVE', function=Function(arguments='{"workspace_id": "customer_analytics", "confidence": 0.95, "reasoning": "The question asks about customer sign-ups over time, which relates to customer behavior and acquisition metrics. This falls under customer analytics as it involves tracking customer activity and lifecycle events."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_BN85FdBKKvR2lBnhPLUW3Ohc', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query involves \'trip count\' and \'driver\', which are key elements in mobility-related data. The focus on trips and drivers aligns with the mobility workspace, which handles trip, driver, vehicle, and city details."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+  🔍 Debug - message.tool_calls: [ChatCompletionMessageFunctionToolCall(id='call_1LQeEZXBhkpavfomn11iXjfg', function=Function(arguments='{"workspace_id": "mobility", "confidence": 0.95, "reasoning": "The query involves drivers, trips, and ratings, which are core elements of the mobility domain. The focus on completed trips and average rating aligns with tracking driver performance and trip metrics, typical in mobility systems."}', name='classify_intent'), type='function', index=0, name=None)]
+  🔍 Debug - message.content: None
+  ✅ Intent Agent: Using structured tool_calls
+  ✅ Table Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ Column Prune Agent: Using structured tool_calls
+  ✅ SQL Generation Agent: Using structured tool_calls
+
+✓ Post-tuning evaluation saved to evaluation_results_post_tuning.json
+
+--------------------------------------------------------------------------------
+POST-TUNING METRICS:
+--------------------------------------------------------------------------------
+Overall Accuracy: 23.5%
+Average Latency: 1125.5ms
+Total Tokens: 67,658
+Estimated Cost: $0.0338
+Reward Score: 0.440
+
+================================================================================
+STEP 7: COMPARISON REPORT
+================================================================================
+
+--------------------------------------------------------------------------------
+METRICS COMPARISON:
+--------------------------------------------------------------------------------
+
+📊 ACCURACY:
+  Baseline:    77.52%
+  Post-tuning: 49.10%
+  Change:      -36.66% ❌
+
+⚡ LATENCY:
+  Baseline:    1157.8ms
+  Post-tuning: 1125.5ms
+  Change:      +2.79% ✅
+
+💰 COST:
+  Baseline:    $0.0413
+  Post-tuning: $0.0338
+  Change:      +18.18% ❌
+
+🎯 REWARD SCORE:
+  Baseline:    0.609
+  Post-tuning: 0.440
+  Change:      -0.169 ❌
+
+✓ Comparison report saved to sft_comparison_report.json
+
+================================================================================
+✅ SFT WORKFLOW COMPLETED
+================================================================================

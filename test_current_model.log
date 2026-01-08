@@ -1,0 +1,81 @@
+Using account ID: sanatmouli-clqab3ddm
+
+⚠ Skipping baseline evaluation
+✓ Loaded existing baseline results
+
+⚠ Skipping dataset upload
+✓ Using existing dataset: querygpt-sft-dataset
+
+⚠ Skipping fine-tuning, using model: accounts/sanatmouli-clqab3ddm/models/querygpt-sft-20260108-023047
+
+⚠ Note: Fine-tuned model will be used for evaluation once it's deployed.
+   If the model isn't available yet, you may need to deploy it manually or wait.
+
+================================================================================
+STEP 6: POST-TUNING EVALUATION
+================================================================================
+
+Loading evaluation data from evaluation_data.json...
+✓ Loaded 34 test cases
+
+Using fine-tuned model for evaluation: accounts/sanatmouli-clqab3ddm/models/querygpt-sft-20260108-023047
+Note: If you get an error, the model may need to be deployed first.
+Check the Fireworks dashboard to deploy the model, or it may auto-deploy.
+
+Initializing QueryGPT with model: accounts/sanatmouli-clqab3ddm/models/querygpt-sft-20260108-023047
+✓ QueryGPT initialized
+
+Loading database...
+✓ Database loaded
+
+Running evaluation...
+
+================================================================================
+Evaluating 34 test cases
+================================================================================
+
+
+✓ Post-tuning evaluation saved to evaluation_results_post_tuning.json
+
+--------------------------------------------------------------------------------
+POST-TUNING METRICS:
+--------------------------------------------------------------------------------
+Overall Accuracy: 0.0%
+Average Latency: 0.0ms
+Total Tokens: 0
+Estimated Cost: $0.0000
+Reward Score: 0.400
+
+================================================================================
+STEP 7: COMPARISON REPORT
+================================================================================
+
+--------------------------------------------------------------------------------
+METRICS COMPARISON:
+--------------------------------------------------------------------------------
+
+📊 ACCURACY:
+  Baseline:    75.46%
+  Post-tuning: 0.00%
+  Change:      -100.00% ❌
+
+⚡ LATENCY:
+  Baseline:    1412.8ms
+  Post-tuning: 0.0ms
+  Change:      +100.00% ✅
+
+💰 COST:
+  Baseline:    $0.0419
+  Post-tuning: $0.0000
+  Change:      +100.00% ❌
+
+🎯 REWARD SCORE:
+  Baseline:    0.596
+  Post-tuning: 0.400
+  Change:      -0.196 ❌
+
+✓ Comparison report saved to sft_comparison_report.json
+
+================================================================================
+✅ SFT WORKFLOW COMPLETED
+================================================================================
