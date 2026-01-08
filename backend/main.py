@@ -132,6 +132,40 @@ async def startup_event():
     os.chdir(parent_dir)
     print(f"Changed to: {os.getcwd()}")
     
+    # Create database if it doesn't exist
+    db_path = parent_dir / "Chinook.db"
+    if not db_path.exists():
+        print(f"\n⚠️  Database not found at {db_path}")
+        print("Creating database...")
+        try:
+            # Create empty database file first
+            import sqlite3
+            conn = sqlite3.connect(str(db_path))
+            conn.close()
+            print("✓ Empty database file created")
+            
+            # Now populate it with tables and data
+            from create_dummy_db import create_dummy_database
+            create_dummy_database(str(db_path))
+            print("✓ Database created and populated successfully")
+        except Exception as e:
+            print(f"⚠️  Failed to create database: {e}")
+            import traceback
+            traceback.print_exc()
+    else:
+        print(f"✓ Database found at {db_path}")
+        # Verify database has tables
+        try:
+            import sqlite3
+            conn = sqlite3.connect(str(db_path))
+            cursor = conn.cursor()
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+            tables = cursor.fetchall()
+            conn.close()
+            print(f"✓ Database has {len(tables)} tables")
+        except Exception as e:
+            print(f"⚠️  Could not verify database: {e}")
+    
     try:
         fireworks_querygpt = FireworksQueryGPT()
         print("✓ Fireworks QueryGPT initialized")
@@ -260,10 +294,15 @@ async def chat(request: ChatRequest):
         
         # Execute SQL and return results
         sql_result = None
+        sql_error = None
         try:
             from utils import load_db, query_db
             # Load database (database is in parent directory)
             db_path = parent_dir / "Chinook.db"
+            print(f"\n[SQL Execution] Database path: {db_path}")
+            print(f"[SQL Execution] Database exists: {db_path.exists()}")
+            print(f"[SQL Execution] SQL query: {result.get('sql', 'N/A')}")
+            
             if db_path.exists():
                 conn = load_db(str(db_path))
                 try:
@@ -272,15 +311,22 @@ async def chat(request: ChatRequest):
                     # Convert to list of dicts for JSON serialization
                     if df_result is not None and not df_result.empty:
                         sql_result = df_result.to_dict("records")
+                        print(f"[SQL Execution] ✓ Query executed successfully, returned {len(sql_result)} rows")
+                    else:
+                        print(f"[SQL Execution] ⚠️  Query executed but returned no results")
+                        sql_result = []
                 finally:
                     conn.close()
             else:
-                print(f"Warning: Database not found at {db_path}")
+                error_msg = f"Database not found at {db_path}"
+                print(f"[SQL Execution] ❌ {error_msg}")
+                sql_error = error_msg
         except Exception as e:
-            print(f"Warning: Could not execute SQL: {e}")
+            error_msg = f"Could not execute SQL: {str(e)}"
+            print(f"[SQL Execution] ❌ {error_msg}")
             import traceback
             traceback.print_exc()
-            # Include error in response so user knows
+            sql_error = error_msg
             sql_result = None
         
         return ChatResponse(
@@ -288,6 +334,7 @@ async def chat(request: ChatRequest):
             explanation=result.get("explanation", ""),
             metrics=metrics,
             result=sql_result,
+            error=sql_error,  # Include SQL execution error if any
         )
     except Exception as e:
         return ChatResponse(
