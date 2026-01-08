@@ -14,26 +14,50 @@ from pydantic import BaseModel
 import sys
 
 # Add parent directory to path to import QueryGPT
-sys.path.insert(0, str(Path(__file__).parent.parent))
+backend_dir = Path(__file__).parent
+parent_dir = backend_dir.parent
+sys.path.insert(0, str(parent_dir))
 
-from fireworks_querygpt import FireworksQueryGPT, load_env_file
+# Try to import QueryGPT - if it fails, app can still start
+try:
+    from fireworks_querygpt import FireworksQueryGPT, load_env_file
+    QUERYGPT_AVAILABLE = True
+except Exception as e:
+    print(f"⚠️  Failed to import FireworksQueryGPT: {e}")
+    import traceback
+    traceback.print_exc()
+    QUERYGPT_AVAILABLE = False
+    # Create a dummy class so the app can still start
+    class FireworksQueryGPT:
+        def __init__(self, *args, **kwargs):
+            pass
+        def generate_sql(self, *args, **kwargs):
+            return {"error": "QueryGPT not initialized", "sql": ""}
+    
+    def load_env_file(*args, **kwargs):
+        pass
 
 # Import OpenAIQueryGPT - it's in evaluate_agents.py
 try:
     from evaluate_agents import OpenAIQueryGPT
+    OPENAI_AVAILABLE = True
 except ImportError:
+    OPENAI_AVAILABLE = False
     # Fallback: define a simple adapter if import fails
     class OpenAIQueryGPT(FireworksQueryGPT):
         """OpenAI adapter for QueryGPT."""
         def __init__(self, *args, **kwargs):
-            from openai import OpenAI
-            import os
-            self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-            self.model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
-            self.intent_model = os.getenv("OPENAI_INTENT_MODEL", "gpt-4o-mini")
-            self.metrics = []
-            self.workspaces = self._load_workspaces()
-            self.intent_mapping = self._load_intent_mapping()
+            try:
+                from openai import OpenAI
+                import os
+                self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+                self.model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+                self.intent_model = os.getenv("OPENAI_INTENT_MODEL", "gpt-4o-mini")
+                self.metrics = []
+                self.workspaces = {}
+                self.intent_mapping = {}
+            except:
+                pass
 
 # Load environment variables from parent directory
 # Backend runs from backend/ directory, so .env is in parent
@@ -87,11 +111,26 @@ async def startup_event():
     """Initialize QueryGPT instances on startup."""
     global fireworks_querygpt, openai_querygpt
     
+    print("\n" + "="*60)
+    print("QueryGPT API Starting Up...")
+    print("="*60)
+    
+    # Print registered routes
+    print("\nRegistered Routes:")
+    for route in app.routes:
+        if hasattr(route, 'path') and hasattr(route, 'methods'):
+            print(f"  {list(route.methods)} {route.path}")
+    
     # Change to parent directory so workspace files can be found
     import os
     original_cwd = os.getcwd()
     parent_dir = Path(__file__).parent.parent
+    print(f"\nCurrent directory: {original_cwd}")
+    print(f"Parent directory: {parent_dir}")
+    print(f"Backend file: {Path(__file__)}")
+    
     os.chdir(parent_dir)
+    print(f"Changed to: {os.getcwd()}")
     
     try:
         fireworks_querygpt = FireworksQueryGPT()
@@ -100,6 +139,7 @@ async def startup_event():
         print(f"⚠️  Failed to initialize Fireworks QueryGPT: {e}")
         import traceback
         traceback.print_exc()
+        # Don't fail startup - allow API to work without QueryGPT if needed
     
     try:
         openai_querygpt = OpenAIQueryGPT()
@@ -108,15 +148,27 @@ async def startup_event():
         print(f"⚠️  Failed to initialize OpenAI QueryGPT: {e}")
         import traceback
         traceback.print_exc()
+        # Don't fail startup - allow API to work without QueryGPT if needed
     
     # Restore original directory
     os.chdir(original_cwd)
+    print("\n✓ Startup complete")
+    print("="*60 + "\n")
 
 
 @app.get("/")
 async def root():
     """Root endpoint."""
-    return {"message": "QueryGPT Evaluation API", "status": "running"}
+    return {
+        "message": "QueryGPT Evaluation API", 
+        "status": "running",
+        "routes": [
+            "/api/health",
+            "/api/chat",
+            "/api/evaluation-results",
+            "/api/golden-dataset",
+        ]
+    }
 
 
 @app.get("/api/health")
@@ -373,6 +425,20 @@ async def get_golden_dataset_stats():
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error loading dataset: {str(e)}")
+
+
+# Debug endpoint to list all routes
+@app.get("/api/routes")
+async def list_routes():
+    """List all registered routes for debugging."""
+    routes = []
+    for route in app.routes:
+        if hasattr(route, 'path') and hasattr(route, 'methods'):
+            routes.append({
+                "path": route.path,
+                "methods": list(route.methods),
+            })
+    return {"routes": routes, "total": len(routes)}
 
 
 if __name__ == "__main__":
